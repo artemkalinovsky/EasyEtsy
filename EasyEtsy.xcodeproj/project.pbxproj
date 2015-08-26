@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AFC8DC842B3C5D924E65FAEA /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A5F6569E28FE154623AA9B /* libPods-EasyEtsy.a */; };
 		C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */; };
+		C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62DC1B8E58230062E761 /* SearchViewController.m */; };
+		C81C62E21B8E5D3E0062E761 /* ListingCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62E11B8E5D3E0062E761 /* ListingCategory.m */; };
+		C81C62E61B8E60400062E761 /* EtsyWebServiceAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62E51B8E60400062E761 /* EtsyWebServiceAPI.m */; };
+		C81C62E91B8E60A70062E761 /* EtsyWebServiceAPIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62E81B8E60A70062E761 /* EtsyWebServiceAPIConstants.m */; };
 		C8DC8A1F1B8E4135002D395B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A1E1B8E4135002D395B /* main.m */; };
 		C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A211B8E4135002D395B /* AppDelegate.m */; };
 		C8DC8A2B1B8E4135002D395B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8DC8A291B8E4135002D395B /* Main.storyboard */; };
@@ -31,6 +35,14 @@
 		0AA3B8C065EAB1077FD97133 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
 		BEBD680F1B335DBFD56C81D5 /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
 		C81C62D81B8E50700062E761 /* EasyEtsy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyEtsy.xcdatamodel; sourceTree = "<group>"; };
+		C81C62DB1B8E58230062E761 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		C81C62DC1B8E58230062E761 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		C81C62E01B8E5D3E0062E761 /* ListingCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingCategory.h; sourceTree = "<group>"; };
+		C81C62E11B8E5D3E0062E761 /* ListingCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingCategory.m; sourceTree = "<group>"; };
+		C81C62E41B8E60400062E761 /* EtsyWebServiceAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtsyWebServiceAPI.h; sourceTree = "<group>"; };
+		C81C62E51B8E60400062E761 /* EtsyWebServiceAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtsyWebServiceAPI.m; sourceTree = "<group>"; };
+		C81C62E71B8E60A70062E761 /* EtsyWebServiceAPIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtsyWebServiceAPIConstants.h; sourceTree = "<group>"; };
+		C81C62E81B8E60A70062E761 /* EtsyWebServiceAPIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtsyWebServiceAPIConstants.m; sourceTree = "<group>"; };
 		C8DC8A191B8E4135002D395B /* EasyEtsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEtsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DC8A1D1B8E4135002D395B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8DC8A1E1B8E4135002D395B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -84,6 +96,8 @@
 		C81C62D31B8E4FFE0062E761 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C81C62DF1B8E5CC70062E761 /* ListingCategory */,
+				C81C62DE1B8E5CC00062E761 /* Listing */,
 				C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */,
 			);
 			path = Model;
@@ -99,6 +113,7 @@
 		C81C62D51B8E50110062E761 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C81C62DA1B8E57900062E761 /* SearchViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -106,8 +121,45 @@
 		C81C62D61B8E501B0062E761 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				C81C62E31B8E601C0062E761 /* EtsyWebServiceAPI */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		C81C62DA1B8E57900062E761 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C81C62DB1B8E58230062E761 /* SearchViewController.h */,
+				C81C62DC1B8E58230062E761 /* SearchViewController.m */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		C81C62DE1B8E5CC00062E761 /* Listing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Listing;
+			sourceTree = "<group>";
+		};
+		C81C62DF1B8E5CC70062E761 /* ListingCategory */ = {
+			isa = PBXGroup;
+			children = (
+				C81C62E01B8E5D3E0062E761 /* ListingCategory.h */,
+				C81C62E11B8E5D3E0062E761 /* ListingCategory.m */,
+			);
+			path = ListingCategory;
+			sourceTree = "<group>";
+		};
+		C81C62E31B8E601C0062E761 /* EtsyWebServiceAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C81C62E41B8E60400062E761 /* EtsyWebServiceAPI.h */,
+				C81C62E51B8E60400062E761 /* EtsyWebServiceAPI.m */,
+				C81C62E71B8E60A70062E761 /* EtsyWebServiceAPIConstants.h */,
+				C81C62E81B8E60A70062E761 /* EtsyWebServiceAPIConstants.m */,
+			);
+			path = EtsyWebServiceAPI;
 			sourceTree = "<group>";
 		};
 		C8DC8A101B8E4134002D395B = {
@@ -308,8 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C81C62E61B8E60400062E761 /* EtsyWebServiceAPI.m in Sources */,
+				C81C62E91B8E60A70062E761 /* EtsyWebServiceAPIConstants.m in Sources */,
+				C81C62E21B8E5D3E0062E761 /* ListingCategory.m in Sources */,
 				C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */,
 				C8DC8A1F1B8E4135002D395B /* main.m in Sources */,
+				C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */,
 				C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +494,7 @@
 				INFOPLIST_FILE = EasyEtsy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
@@ -449,6 +506,7 @@
 				INFOPLIST_FILE = EasyEtsy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};

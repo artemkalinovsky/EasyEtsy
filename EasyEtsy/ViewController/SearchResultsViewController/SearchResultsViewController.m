@@ -11,10 +11,19 @@
 #import "EtsyWebServiceAPI.h"
 
 @interface SearchResultsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-@property(strong, nonatomic) NSArray *fetchedActiveListings;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray *fetchedActiveListings;
 @end
 
 @implementation SearchResultsViewController
+
+- (UIRefreshControl *)refreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [[UIRefreshControl alloc] init];
+        _refreshControl.tintColor = [UIColor grayColor];
+    }
+    return _refreshControl;
+}
 
 - (NSArray *)fetchedActiveListings {
     if (!_fetchedActiveListings) {
@@ -32,6 +41,9 @@
     // Register cell classes
 //    [self.collectionView registerClass:[ListingCollectionViewCell class]
 //            forCellWithReuseIdentifier:listingCellReuseIdentifier];
+
+    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:self.refreshControl];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -112,6 +124,27 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+}
+
+#pragma mark - IBActions
+
+- (void)refreshAction {
+    [self.refreshControl endRefreshing];
+    __weak typeof(self) weakSelf = self;
+    [[EtsyWebServiceAPI sharedManager] fetchActiveListingsWithParameters:self.searchParams
+                                                              completion:^(NSArray *listings, NSError *error) {
+                                                                  if (!error && listings) {
+                                                                      weakSelf.fetchedActiveListings = listings;
+                                                                      [weakSelf.collectionView reloadData];
+                                                                  } else {
+                                                                      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                                                      message:error.localizedDescription
+                                                                                                                     delegate:self
+                                                                                                            cancelButtonTitle:@"OK"
+                                                                                                            otherButtonTitles:nil];
+                                                                      [alert show];
+                                                                  }
+                                                              }];
 }
 
 @end

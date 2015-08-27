@@ -12,6 +12,7 @@
 
 @implementation Listing
 
+@dynamic listingId;
 @dynamic imageURLString;
 @dynamic name;
 @dynamic detailedDescription;

@@ -12,6 +12,7 @@
 
 @interface Listing : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * listingId;
 @property (nonatomic, retain) NSString * imageURLString;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * detailedDescription;

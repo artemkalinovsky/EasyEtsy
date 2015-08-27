@@ -12,10 +12,12 @@
 #import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
 #import "Listing.h"
-#import "Listing+Extensions.h"
+#import "TFHppleElement.h"
+#import "TFHpple.h"
+#import "DBGHTMLEntityDecoder.h"
 
 @interface EtsyWebServiceAPI ()
-@property (strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
+@property(strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
 @end
 
 @implementation EtsyWebServiceAPI
@@ -100,6 +102,7 @@
                     completionBlock(activeListings, nil);
                     [SVProgressHUD dismiss];
                 });
+
             }
                                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
@@ -131,9 +134,9 @@
             @try {
                 ListingCategory *listingCategory = [[ListingCategory alloc] init];
                 listingCategory.categoryId = categoryDict[@"category_id"];
-                listingCategory.categoryName =  categoryDict[@"category_name"];
-                listingCategory.categoryShortName =  categoryDict[@"short_name"];
-                listingCategory.categoryLongName =  categoryDict[@"long_name"];
+                listingCategory.categoryName = categoryDict[@"category_name"];
+                listingCategory.categoryShortName = categoryDict[@"short_name"];
+                listingCategory.categoryLongName = categoryDict[@"long_name"];
                 [fetchedCategories addObject:listingCategory];
             }
             @catch (NSException *e) {
@@ -145,32 +148,36 @@
 }
 
 - (NSArray *)fetchActiveListingsFromServerResponse:(NSArray *)activeListingsResponse {
-    NSMutableArray *fetchedCategories = [[NSMutableArray alloc] init];
+    NSMutableArray *fetchedListings = [[NSMutableArray alloc] init];
+    DBGHTMLEntityDecoder *decoder = [[DBGHTMLEntityDecoder alloc] init];
 
     for (NSDictionary *activeListingDict in activeListingsResponse) {
-        @autoreleasepool {
-            @try {
-                Listing *listing = [[Listing alloc] init];
-                listing.name = activeListingDict[@"title"];
-                listing.detailedDescription =  activeListingDict[@"description"];
-                listing.price =  activeListingDict[@"price"];
-                listing.priceCurrency =  activeListingDict[@"currency_code"];
-                [listing fetchImagePathFromURLString:activeListingDict[@"url"]
-                                     completionBlock:^(NSString *imageURLString, NSError *error) {
-                                         if (!error && imageURLString) {
-                                             listing.imageURLString = imageURLString;
-                                         } else {
-                                             NSLog(@"%@",error.localizedDescription);
-                                         }
-                                     }];
-                [fetchedCategories addObject:listing];
-            }
-            @catch (NSException *e) {
-
-            }
+        @try {
+            Listing *listing = [[Listing alloc] init];
+            listing.name = [decoder decodeString:activeListingDict[@"title"]];
+            listing.detailedDescription = [decoder decodeString:activeListingDict[@"description"]];
+            listing.price = activeListingDict[@"price"];
+            listing.priceCurrency = activeListingDict[@"currency_code"];
+            listing.imageURLString = [self fetchImagePathFromURLString:activeListingDict[@"url"]];
+            [fetchedListings addObject:listing];
         }
+        @catch (NSException *e) {
+
+        }
+
     }
-    return fetchedCategories;
+    return fetchedListings;
+}
+
+- (NSString *)fetchImagePathFromURLString:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *htmlData = [NSData dataWithContentsOfURL:url];
+    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:htmlData];
+    NSString *listingImageXPathQueryString = @"//meta[@property='og:image']";
+    NSArray *matchedNodes = [htmlParser searchWithXPathQuery:listingImageXPathQueryString];
+    TFHppleElement * element = [matchedNodes firstObject];
+    NSString *photoURLString = element.attributes[@"content"];
+    return  photoURLString;
 }
 
 @end

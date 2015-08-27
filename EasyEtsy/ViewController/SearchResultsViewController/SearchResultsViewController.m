@@ -8,6 +8,7 @@
 
 #import "SearchResultsViewController.h"
 #import "ListingCollectionViewCell.h"
+#import "EtsyWebServiceAPI.h"
 
 @interface SearchResultsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -24,6 +25,18 @@
     // Register cell classes
     [self.collectionView registerClass:[ListingCollectionViewCell class]
             forCellWithReuseIdentifier:listingCellReuseIdentifier];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[EtsyWebServiceAPI sharedManager] fetchActiveListingsWithParameters:self.searchParams
+                                                              completion:^(NSArray *listings, NSError *error) {
+                                                                  if(!error && listings) {
+                                                                     NSLog(@"OK");
+                                                                  } else {
+                                                                      NSLog(@"%@", error.localizedDescription);
+                                                                  }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

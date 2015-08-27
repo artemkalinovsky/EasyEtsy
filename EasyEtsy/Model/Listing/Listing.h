@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString * price;
 @property (nonatomic, retain) NSString * priceCurrency;
 
+- (instancetype)init;
+
 @end

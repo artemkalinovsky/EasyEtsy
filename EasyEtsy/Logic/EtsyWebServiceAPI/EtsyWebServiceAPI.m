@@ -14,18 +14,10 @@
 
 @interface EtsyWebServiceAPI ()
 @property (strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
-@property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 @end
 
 @implementation EtsyWebServiceAPI
 
-- (NSNumberFormatter *)numberFormatter {
-    if (!_numberFormatter) {
-        _numberFormatter = [[NSNumberFormatter alloc] init];
-        _numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    }
-    return _numberFormatter;
-}
 #pragma mark - Singleton Methods
 
 + (instancetype)sharedManager {

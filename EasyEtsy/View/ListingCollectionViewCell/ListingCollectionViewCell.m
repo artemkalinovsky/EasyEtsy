@@ -10,12 +10,13 @@
 #import "SDImageCache.h"
 #import "UIImageView+WebCache.h"
 #import "Listing.h"
+#import "EtsyWebServiceAPI.h"
 
-NSString* const listingCellReuseIdentifier = @"listingCollectionViewCell";
+NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";
 
-@interface ListingCollectionViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *listingImageView;
-@property (weak, nonatomic) IBOutlet UILabel *listingNameLabel;
+@interface ListingCollectionViewCell ()
+@property(weak, nonatomic) IBOutlet UIImageView *listingImageView;
+@property(weak, nonatomic) IBOutlet UILabel *listingNameLabel;
 @end
 
 @implementation ListingCollectionViewCell
@@ -24,10 +25,26 @@ NSString* const listingCellReuseIdentifier = @"listingCollectionViewCell";
 
     self.listingNameLabel.text = listing.name;
 
-    [self.listingImageView sd_setImageWithURL:[NSURL URLWithString:listing.imageURLString]
-                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                    }];
+    __weak typeof(self) weakSelf = self;
+    if (!listing.imageURLString) {
+        [[EtsyWebServiceAPI sharedManager] fetchImageURLForListing:listing
+                                                        completion:^(NSString *imageURL, NSError *error) {
+                                                            if (!error && imageURL) {
+                                                                listing.imageURLString = imageURL;
+                                                                [weakSelf.listingImageView sd_setImageWithURL:[NSURL URLWithString:listing.imageURLString]
+                                                                                             placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                                                                                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                                                                    }];
+                                                            } else {
+                                                                NSLog(@"%@", error.localizedDescription);
+                                                            }
+                                                        }];
+    } else {
+        [weakSelf.listingImageView sd_setImageWithURL:[NSURL URLWithString:listing.imageURLString]
+                                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                            }];
+    }
 }
 
 @end

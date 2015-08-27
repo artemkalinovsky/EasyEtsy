@@ -12,3 +12,4 @@ NSString* const kEtsyAPIBaseURL = @"https://openapi.etsy.com/v2";
 NSString* const kEtsyAPIKey = @"l6pdqjuf7hdf97h1yvzadfce";
 NSString* const kEtsyAPICategories = @"/taxonomy/categories";
 NSString* const kEtsyAPIActiveListings = @"/listings/active";
+NSString* const kEtsyAPIListingImages = @"/listings/:listing_id/images";

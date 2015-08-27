@@ -108,7 +108,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vTC-QE-Xt3">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vTC-QE-Xt3">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="114"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDb-Ra-7LR">
@@ -130,6 +130,10 @@
                                     <constraint firstItem="RDb-Ra-7LR" firstAttribute="top" secondItem="vTC-QE-Xt3" secondAttribute="bottom" constant="8" id="fbZ-2T-aSm"/>
                                     <constraint firstItem="vTC-QE-Xt3" firstAttribute="leading" secondItem="xda-yb-2g3" secondAttribute="leadingMargin" constant="-8" id="jws-oz-QrI"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="listingImageView" destination="vTC-QE-Xt3" id="Aih-x7-I8T"/>
+                                    <outlet property="listingNameLabel" destination="RDb-Ra-7LR" id="LyO-l9-AzM"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

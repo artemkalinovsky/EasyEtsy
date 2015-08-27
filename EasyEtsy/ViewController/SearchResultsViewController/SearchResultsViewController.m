@@ -11,32 +11,46 @@
 #import "EtsyWebServiceAPI.h"
 
 @interface SearchResultsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
+@property(strong, nonatomic) NSArray *fetchedActiveListings;
 @end
 
 @implementation SearchResultsViewController
 
+- (NSArray *)fetchedActiveListings {
+    if (!_fetchedActiveListings) {
+        _fetchedActiveListings = [[NSArray alloc] init];
+    }
+    return _fetchedActiveListings;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Register cell classes
-    [self.collectionView registerClass:[ListingCollectionViewCell class]
-            forCellWithReuseIdentifier:listingCellReuseIdentifier];
+//    [self.collectionView registerClass:[ListingCollectionViewCell class]
+//            forCellWithReuseIdentifier:listingCellReuseIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    __weak typeof(self) weakSelf = self;
     [[EtsyWebServiceAPI sharedManager] fetchActiveListingsWithParameters:self.searchParams
                                                               completion:^(NSArray *listings, NSError *error) {
-                                                                  if(!error && listings) {
-                                                                     NSLog(@"OK");
+                                                                  if (!error && listings) {
+                                                                      weakSelf.fetchedActiveListings = listings;
+                                                                      [weakSelf.collectionView reloadData];
                                                                   } else {
-                                                                      NSLog(@"%@", error.localizedDescription);
+                                                                      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                                                      message:error.localizedDescription
+                                                                                                                     delegate:self
+                                                                                                            cancelButtonTitle:@"OK"
+                                                                                                            otherButtonTitles:nil];
+                                                                      [alert show];
                                                                   }
-    }];
+                                                              }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,19 +91,19 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return self.fetchedActiveListings.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ListingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:listingCellReuseIdentifier
-                                                                           forIndexPath:indexPath];
-
-    
+                                                                                forIndexPath:indexPath];
+    Listing *listing = self.fetchedActiveListings[(NSUInteger) indexPath.row];
+    [cell configureWithListing:listing];
     return cell;
 }
 

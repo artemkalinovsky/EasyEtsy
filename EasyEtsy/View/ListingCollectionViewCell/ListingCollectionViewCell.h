@@ -8,8 +8,12 @@
 
 @import UIKit;
 
+@class Listing;
+
 extern NSString* const listingCellReuseIdentifier;
 
 @interface ListingCollectionViewCell : UICollectionViewCell
+
+- (void)configureWithListing:(Listing *)listing;
 
 @end

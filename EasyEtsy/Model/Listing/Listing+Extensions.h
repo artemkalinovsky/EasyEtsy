@@ -10,4 +10,7 @@
 
 @interface Listing (Extensions)
 
+- (void)fetchImagePathFromURLString:(NSString *)url
+                    completionBlock:(void (^)(NSString *imageURLString, NSError *error))completion;
+
 @end

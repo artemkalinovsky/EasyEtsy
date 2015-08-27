@@ -12,6 +12,7 @@
 #import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
 #import "Listing.h"
+#import "Listing+Extensions.h"
 
 @interface EtsyWebServiceAPI ()
 @property (strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
@@ -154,6 +155,14 @@
                 listing.detailedDescription =  activeListingDict[@"description"];
                 listing.price =  activeListingDict[@"price"];
                 listing.priceCurrency =  activeListingDict[@"currency_code"];
+                [listing fetchImagePathFromURLString:activeListingDict[@"url"]
+                                     completionBlock:^(NSString *imageURLString, NSError *error) {
+                                         if (!error && imageURLString) {
+                                             listing.imageURLString = imageURLString;
+                                         } else {
+                                             NSLog(@"%@",error.localizedDescription);
+                                         }
+                                     }];
                 [fetchedCategories addObject:listing];
             }
             @catch (NSException *e) {

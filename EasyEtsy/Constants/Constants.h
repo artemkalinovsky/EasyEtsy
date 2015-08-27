@@ -11,3 +11,4 @@
 #pragma mark - Storyboard
 
 extern NSString* const toSearchResultsSegue;
+extern NSString* const toSingleListingDetailsSegue;

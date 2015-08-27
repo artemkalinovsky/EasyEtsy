@@ -11,3 +11,4 @@
 #pragma mark - Storyboard
 
 NSString* const toSearchResultsSegue = @"toSearchResultsSegue";
+NSString* const toSingleListingDetailsSegue = @"toSingleListingDetailsSegue";

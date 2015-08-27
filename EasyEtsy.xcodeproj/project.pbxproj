@@ -16,6 +16,8 @@
 		C84043DC1B8F046800C15C9E /* ListingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043DB1B8F046800C15C9E /* ListingCollectionViewCell.m */; };
 		C84043E01B8F050A00C15C9E /* SearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043DF1B8F050A00C15C9E /* SearchResultsViewController.m */; };
 		C84043E41B8F089A00C15C9E /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043E31B8F089A00C15C9E /* Constants.m */; };
+		C84043E81B8F0DCB00C15C9E /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043E71B8F0DCB00C15C9E /* Listing.m */; };
+		C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */; };
 		C8DC8A1F1B8E4135002D395B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A1E1B8E4135002D395B /* main.m */; };
 		C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A211B8E4135002D395B /* AppDelegate.m */; };
 		C8DC8A2B1B8E4135002D395B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8DC8A291B8E4135002D395B /* Main.storyboard */; };
@@ -52,6 +54,10 @@
 		C84043DF1B8F050A00C15C9E /* SearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewController.m; sourceTree = "<group>"; };
 		C84043E21B8F089A00C15C9E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C84043E31B8F089A00C15C9E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		C84043E61B8F0DC300C15C9E /* Listing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
+		C84043E71B8F0DCB00C15C9E /* Listing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listing.m; sourceTree = "<group>"; };
+		C84043E91B8F0E5800C15C9E /* Listing+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Listing+Extensions.h"; sourceTree = "<group>"; };
+		C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Listing+Extensions.m"; sourceTree = "<group>"; };
 		C8DC8A191B8E4135002D395B /* EasyEtsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEtsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DC8A1D1B8E4135002D395B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8DC8A1E1B8E4135002D395B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -105,8 +111,8 @@
 		C81C62D31B8E4FFE0062E761 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C84043E51B8F0CC700C15C9E /* Listing */,
 				C81C62DF1B8E5CC70062E761 /* ListingCategory */,
-				C81C62DE1B8E5CC00062E761 /* Listing */,
 				C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */,
 			);
 			path = Model;
@@ -136,13 +142,6 @@
 				C81C62DC1B8E58230062E761 /* SearchViewController.m */,
 			);
 			path = SearchViewController;
-			sourceTree = "<group>";
-		};
-		C81C62DE1B8E5CC00062E761 /* Listing */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Listing;
 			sourceTree = "<group>";
 		};
 		C81C62DF1B8E5CC70062E761 /* ListingCategory */ = {
@@ -198,6 +197,17 @@
 				C84043E31B8F089A00C15C9E /* Constants.m */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C84043E51B8F0CC700C15C9E /* Listing */ = {
+			isa = PBXGroup;
+			children = (
+				C84043E61B8F0DC300C15C9E /* Listing.h */,
+				C84043E71B8F0DCB00C15C9E /* Listing.m */,
+				C84043E91B8F0E5800C15C9E /* Listing+Extensions.h */,
+				C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */,
+			);
+			path = Listing;
 			sourceTree = "<group>";
 		};
 		C8DC8A101B8E4134002D395B = {
@@ -406,6 +416,8 @@
 				C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */,
 				C84043E41B8F089A00C15C9E /* Constants.m in Sources */,
 				C8DC8A1F1B8E4135002D395B /* main.m in Sources */,
+				C84043E81B8F0DCB00C15C9E /* Listing.m in Sources */,
+				C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */,
 				C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */,
 				C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */,
 				C84043DC1B8F046800C15C9E /* ListingCollectionViewCell.m in Sources */,

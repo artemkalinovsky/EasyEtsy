@@ -60,7 +60,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapOnSubmitButton:" destination="yKp-rd-mZO" eventType="touchUpInside" id="NKN-6P-iIn"/>
                                     <segue destination="OMi-vE-qFm" kind="show" identifier="toSearchResultsSegue" id="MM6-c1-GkC"/>
                                 </connections>
                             </button>

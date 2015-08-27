@@ -88,10 +88,4 @@
     }
 }
 
-#pragma mark - IBAction
-
-- (IBAction)tapOnSubmitButton:(UIButton *)sender {
-
-}
-
 @end

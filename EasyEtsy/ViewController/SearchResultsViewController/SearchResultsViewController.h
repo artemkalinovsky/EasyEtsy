@@ -10,4 +10,6 @@
 
 @interface SearchResultsViewController : UICollectionViewController
 
+@property (strong, nonatomic) NSDictionary *searchParams;
+
 @end

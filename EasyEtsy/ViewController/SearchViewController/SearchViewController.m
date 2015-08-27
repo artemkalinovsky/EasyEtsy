@@ -9,12 +9,15 @@
 #import "SearchViewController.h"
 #import "ListingCategory.h"
 #import "EtsyWebServiceAPI.h"
+#import "Constants.h"
+#import "SearchResultsViewController.h"
 
 @interface SearchViewController () <UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *listingCategories;
+@property (assign, nonatomic) NSUInteger selectedListingCategoryIndex;
 
 @end
 
@@ -61,6 +64,10 @@
     return listingCategory.categoryLongName;
 }
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.selectedListingCategoryIndex = (NSUInteger) row;
+}
+
 #pragma mark - UIPickerViewDataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -74,7 +81,11 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    if ([segue.identifier isEqualToString:toSearchResultsSegue]) {
+        ListingCategory *selectedListingCategory = self.listingCategories[self.selectedListingCategoryIndex];
+        SearchResultsViewController *destinationVC = segue.destinationViewController;
+        destinationVC.searchParams = @{@"category" : selectedListingCategory.categoryName, @"keywords" : self.searchBar.text};
+    }
 }
 
 #pragma mark - IBAction

@@ -15,6 +15,10 @@ typedef void (^EtsyWebServiceAPIResponse)(NSArray *, NSError *);
 + (instancetype)sharedManager;
 
 - (void)fetchListingCategoriesWithCompletion:(EtsyWebServiceAPIResponse)completionBlock;
+
+- (void)fetchActiveListingsWithParameters:(NSDictionary *)parameters
+                               completion:(EtsyWebServiceAPIResponse)completionBlock;
+
 - (void)cancelRequest;
 
 @end

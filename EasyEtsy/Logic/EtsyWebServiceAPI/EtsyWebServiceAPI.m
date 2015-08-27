@@ -11,6 +11,7 @@
 #import "SVProgressHUD.h"
 #import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
+#import "Listing.h"
 
 @interface EtsyWebServiceAPI ()
 @property (strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
@@ -74,6 +75,43 @@
     [self.afhttpRequestOperation resume];
 }
 
+- (void)fetchActiveListingsWithParameters:(NSDictionary *)parameters
+                               completion:(EtsyWebServiceAPIResponse)completionBlock {
+
+    NSMutableDictionary *params = [@{@"api_key" : kEtsyAPIKey} mutableCopy];
+    [params addEntriesFromDictionary:parameters];
+
+    NSString *urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIActiveListings];
+
+    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
+                                                                          URLString:urlString
+                                                                         parameters:params
+                                                                              error:nil];
+
+    self.afhttpRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    self.afhttpRequestOperation.responseSerializer = [AFJSONResponseSerializer serializer];
+
+    __weak typeof(self) weakSelf = self;
+    [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSArray *listingsResponse = responseObject[@"results"];
+                NSArray *activeListings = [weakSelf fetchActiveListingsFromServerResponse:listingsResponse];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(activeListings, nil);
+                    [SVProgressHUD dismiss];
+                });
+            }
+                                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                               [SVProgressHUD dismiss];
+                                                               completionBlock(nil, error);
+                                                           });
+                                                       }];
+
+    [[NSOperationQueue mainQueue] addOperation:self.afhttpRequestOperation];
+    [SVProgressHUD show];
+    [self.afhttpRequestOperation resume];
+}
+
 - (void)cancelRequest {
     [SVProgressHUD dismiss];
     if (self.afhttpRequestOperation.isExecuting) {
@@ -96,6 +134,27 @@
                 listingCategory.categoryShortName =  categoryDict[@"short_name"];
                 listingCategory.categoryLongName =  categoryDict[@"long_name"];
                 [fetchedCategories addObject:listingCategory];
+            }
+            @catch (NSException *e) {
+
+            }
+        }
+    }
+    return fetchedCategories;
+}
+
+- (NSArray *)fetchActiveListingsFromServerResponse:(NSArray *)activeListingsResponse {
+    NSMutableArray *fetchedCategories = [[NSMutableArray alloc] init];
+
+    for (NSDictionary *activeListingDict in activeListingsResponse) {
+        @autoreleasepool {
+            @try {
+                Listing *listing = [[Listing alloc] init];
+                listing.name = activeListingDict[@"title"];
+                listing.detailedDescription =  activeListingDict[@"description"];
+                listing.price =  activeListingDict[@"price"];
+                listing.priceCurrency =  activeListingDict[@"currency_code"];
+                [fetchedCategories addObject:listing];
             }
             @catch (NSException *e) {
 

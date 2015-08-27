@@ -7,12 +7,18 @@
 //
 
 #import "SearchResultsViewController.h"
+#import "Constants.h"
 #import "ListingCollectionViewCell.h"
 #import "EtsyWebServiceAPI.h"
+#import "SingleListingDetailsViewController.h"
 
 @interface SearchResultsViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *fetchedActiveListings;
+@property (strong, nonatomic) UIImage *selectedListingImage;
+@property (assign, nonatomic) NSUInteger selectedListingIndex;
+
 @end
 
 @implementation SearchResultsViewController
@@ -71,34 +77,12 @@
 
 #pragma mark - UICollectionViewDelegate
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedListingIndex = (NSUInteger) indexPath.row;
+    ListingCollectionViewCell *cell = (ListingCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
+    self.selectedListingImage = cell.listingImage;
+    [self performSegueWithIdentifier:toSingleListingDetailsSegue sender:self];
 }
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-
-}
-*/
 
 #pragma mark - UICollectionViewDataSource
 
@@ -123,7 +107,12 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    if ([segue.identifier isEqualToString:toSingleListingDetailsSegue]) {
+        Listing *selectedListing = self.fetchedActiveListings[self.selectedListingIndex];
+        SingleListingDetailsViewController *destinationVC = segue.destinationViewController;
+        destinationVC.detailedListing = selectedListing;
+        destinationVC.detailedListingImage = self.selectedListingImage;
+    }
 }
 
 #pragma mark - IBActions

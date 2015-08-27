@@ -14,6 +14,8 @@ extern NSString* const listingCellReuseIdentifier;
 
 @interface ListingCollectionViewCell : UICollectionViewCell
 
+@property (strong, nonatomic, readonly) UIImage *listingImage;
+
 - (void)configureWithListing:(Listing *)listing;
 
 @end

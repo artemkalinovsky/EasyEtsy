@@ -17,6 +17,7 @@ NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";
 @interface ListingCollectionViewCell ()
 @property(weak, nonatomic) IBOutlet UIImageView *listingImageView;
 @property(weak, nonatomic) IBOutlet UILabel *listingNameLabel;
+@property (strong, nonatomic, readwrite) UIImage *listingImage;
 @end
 
 @implementation ListingCollectionViewCell
@@ -34,6 +35,9 @@ NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";
                                                                 [weakSelf.listingImageView sd_setImageWithURL:[NSURL URLWithString:listing.imageURLString]
                                                                                              placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                                                                                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                                                                        if (image) {
+                                                                                                            weakSelf.listingImage = image;
+                                                                                                        }
                                                                                                     }];
                                                             } else {
                                                                 NSLog(@"%@", error.localizedDescription);
@@ -43,6 +47,9 @@ NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";
         [weakSelf.listingImageView sd_setImageWithURL:[NSURL URLWithString:listing.imageURLString]
                                      placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                                if (image) {
+                                                    weakSelf.listingImage = image;
+                                                }
                                             }];
     }
 }

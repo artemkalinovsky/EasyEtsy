@@ -166,12 +166,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyN-ln-dVo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPd-df-3EL">
-                                        <rect key="frame" x="0.0" y="8" width="600" height="343"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="JPd-df-3EL" secondAttribute="height" multiplier="600:343" id="HvX-eo-HcN"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbv-N7-egw">
                                         <rect key="frame" x="8" y="359" width="584" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -190,6 +184,12 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPd-df-3EL">
+                                        <rect key="frame" x="0.0" y="8" width="600" height="343"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JPd-df-3EL" secondAttribute="height" multiplier="600:343" id="HvX-eo-HcN"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="p05-D2-g7d" secondAttribute="trailing" constant="8" id="2wu-wo-5vS"/>
@@ -211,10 +211,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qCS-NB-1tc" firstAttribute="top" secondItem="YyN-ln-dVo" secondAttribute="bottom" constant="-44" id="1jM-S8-r1V"/>
                             <constraint firstItem="YyN-ln-dVo" firstAttribute="leading" secondItem="5TB-Qz-neu" secondAttribute="leadingMargin" constant="-16" id="Eep-KR-gP4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YyN-ln-dVo" secondAttribute="trailing" constant="-16" id="FxL-vj-rzc"/>
                             <constraint firstItem="YyN-ln-dVo" firstAttribute="top" secondItem="HjU-i4-8QK" secondAttribute="bottom" constant="-64" id="KHK-cH-zQ8"/>
+                            <constraint firstAttribute="bottom" secondItem="YyN-ln-dVo" secondAttribute="bottom" id="qy1-jK-IME"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -222,6 +222,12 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ER2-MO-WTz"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="listingDetailedDescriptionLabel" destination="0Ag-tU-yla" id="SHl-24-YUk"/>
+                        <outlet property="listingImageView" destination="JPd-df-3EL" id="dHS-db-Y3T"/>
+                        <outlet property="listingNameLabel" destination="zbv-N7-egw" id="88q-Ky-doF"/>
+                        <outlet property="listingPriceLabel" destination="p05-D2-g7d" id="FeH-2l-L2O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5w-JP-8PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

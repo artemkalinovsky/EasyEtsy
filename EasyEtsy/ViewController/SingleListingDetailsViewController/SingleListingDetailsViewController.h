@@ -8,6 +8,11 @@
 
 @import UIKit;
 
+@class Listing;
+
 @interface SingleListingDetailsViewController : UIViewController
+
+@property (strong, nonatomic) Listing *detailedListing;
+@property (strong, nonatomic) UIImage *detailedListingImage;
 
 @end

@@ -6,25 +6,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Bookmarks-->
-        <scene sceneID="MwX-6p-3Bv">
-            <objects>
-                <viewController id="Mrb-ak-8Ai" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5K2-0X-g7Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="7wU-1l-k07"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qPv-28-dEi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Bookmarks" id="Xs8-4W-X9O"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z9L-t4-FRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1671" y="575"/>
-        </scene>
         <!--Search-->
         <scene sceneID="A3P-6h-Git">
             <objects>
@@ -229,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5w-JP-8PC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3028" y="-87"/>
+            <point key="canvasLocation" x="3272" y="244"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Zuh-X5-eep">
@@ -281,12 +262,79 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Mrb-ak-8Ai" kind="relationship" relationship="rootViewController" id="FfD-VT-gEh"/>
+                        <segue destination="jcz-Rz-LeO" kind="relationship" relationship="rootViewController" id="YD7-r3-BeV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQS-ei-naf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="575"/>
         </scene>
+        <!--Saved Listings-->
+        <scene sceneID="jdx-Ua-odd">
+            <objects>
+                <collectionViewController id="jcz-Rz-LeO" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="ptF-ds-k7l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jgd-XG-STk">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="listingCollectionViewCell" id="4SO-39-y0R" customClass="ListingCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mrj-G2-goR">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSk-AW-4tZ">
+                                            <rect key="frame" x="8" y="128" width="134" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mSk-AW-4tZ" firstAttribute="leading" secondItem="4SO-39-y0R" secondAttribute="leadingMargin" id="6xy-8j-bRI"/>
+                                    <constraint firstItem="mrj-G2-goR" firstAttribute="leading" secondItem="4SO-39-y0R" secondAttribute="leadingMargin" constant="-8" id="8PH-DH-pGX"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="mrj-G2-goR" secondAttribute="trailing" constant="-8" id="LEe-mF-gZG"/>
+                                    <constraint firstItem="mSk-AW-4tZ" firstAttribute="trailing" secondItem="4SO-39-y0R" secondAttribute="trailingMargin" id="Nrs-QV-0Tj"/>
+                                    <constraint firstItem="mSk-AW-4tZ" firstAttribute="bottom" secondItem="4SO-39-y0R" secondAttribute="bottomMargin" id="Utt-St-s6H"/>
+                                    <constraint firstItem="mSk-AW-4tZ" firstAttribute="top" secondItem="mrj-G2-goR" secondAttribute="bottom" constant="8" id="eS9-18-h5S"/>
+                                    <constraint firstItem="mrj-G2-goR" firstAttribute="top" secondItem="4SO-39-y0R" secondAttribute="topMargin" constant="-8" id="gZY-9f-07i"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="listingImageView" destination="mrj-G2-goR" id="xWh-7p-ivx"/>
+                                    <outlet property="listingNameLabel" destination="mSk-AW-4tZ" id="bsU-ly-gex"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="jcz-Rz-LeO" id="NkC-SU-kBq"/>
+                            <outlet property="delegate" destination="jcz-Rz-LeO" id="7OT-I0-NKX"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Saved Listings" id="68E-fO-SGM"/>
+                    <connections>
+                        <segue destination="Jzz-CD-YF3" kind="show" identifier="toSingleListingDetailsSegue" id="vpx-iR-Vmd"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYM-EO-8YE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349" y="575"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vpx-iR-Vmd"/>
+    </inferredMetricsTieBreakers>
 </document>

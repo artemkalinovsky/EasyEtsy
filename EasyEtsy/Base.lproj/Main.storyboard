@@ -218,9 +218,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Listing Details" id="umI-SJ-aqC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ER2-MO-WTz"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Listing Details" id="umI-SJ-aqC"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listingDetailedDescriptionLabel" destination="0Ag-tU-yla" id="SHl-24-YUk"/>

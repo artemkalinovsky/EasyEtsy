@@ -15,6 +15,8 @@
 #import "TFHppleElement.h"
 #import "TFHpple.h"
 #import "DBGHTMLEntityDecoder.h"
+#import "NSManagedObject+MagicalRecord.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
 
 @interface EtsyWebServiceAPI ()
 @property(strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;

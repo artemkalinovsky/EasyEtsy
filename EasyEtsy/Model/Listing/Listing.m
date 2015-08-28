@@ -8,6 +8,7 @@
 
 #import "Listing.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalRecord.h"
 
 
 @implementation Listing
@@ -19,10 +20,19 @@
 @dynamic price;
 @dynamic priceCurrency;
 
++ (NSManagedObjectContext *)privateManagedObjectContext {
+    static NSManagedObjectContext *moc = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        moc = [NSManagedObjectContext MR_context];
+    });
+    return moc;
+}
+
 - (instancetype)init {
-    Listing *listing = [NSEntityDescription insertNewObjectForEntityForName:@"Listing"
-                                                     inManagedObjectContext:[NSManagedObjectContext MR_defaultContext]];
+    Listing *listing = [Listing MR_createEntityInContext:[Listing privateManagedObjectContext]];
     return listing;
 }
+
 
 @end

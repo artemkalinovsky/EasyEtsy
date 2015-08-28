@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AFC8DC842B3C5D924E65FAEA /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A5F6569E28FE154623AA9B /* libPods-EasyEtsy.a */; };
+		C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */; };
 		C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */; };
 		C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62DC1B8E58230062E761 /* SearchViewController.m */; };
 		C81C62E21B8E5D3E0062E761 /* ListingCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62E11B8E5D3E0062E761 /* ListingCategory.m */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		0AA3B8C065EAB1077FD97133 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
 		BEBD680F1B335DBFD56C81D5 /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
+		C80EE0051B9128920047EC71 /* SavedListingsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedListingsCollectionViewController.h; sourceTree = "<group>"; };
+		C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedListingsCollectionViewController.m; sourceTree = "<group>"; };
 		C81C62D81B8E50700062E761 /* EasyEtsy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyEtsy.xcdatamodel; sourceTree = "<group>"; };
 		C81C62DB1B8E58230062E761 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		C81C62DC1B8E58230062E761 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
@@ -111,6 +114,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C80EE0041B91286B0047EC71 /* SavedListingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C80EE0051B9128920047EC71 /* SavedListingsCollectionViewController.h */,
+				C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */,
+			);
+			path = SavedListingsViewController;
+			sourceTree = "<group>";
+		};
 		C81C62D31B8E4FFE0062E761 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 		C81C62D51B8E50110062E761 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C80EE0041B91286B0047EC71 /* SavedListingsViewController */,
 				C852196E1B8FBF08002CB974 /* SingleListingDetailsViewController */,
 				C84043DD1B8F04E200C15C9E /* SearchResultsViewController */,
 				C81C62DA1B8E57900062E761 /* SearchViewController */,
@@ -429,6 +442,7 @@
 				C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */,
 				C84043E41B8F089A00C15C9E /* Constants.m in Sources */,
 				C8DC8A1F1B8E4135002D395B /* main.m in Sources */,
+				C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */,
 				C85219711B8FBF37002CB974 /* SingleListingDetailsViewController.m in Sources */,
 				C84043E81B8F0DCB00C15C9E /* Listing.m in Sources */,
 				C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */,

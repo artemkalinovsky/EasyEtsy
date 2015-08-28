@@ -272,7 +272,7 @@
         <!--Saved Listings-->
         <scene sceneID="jdx-Ua-odd">
             <objects>
-                <collectionViewController id="jcz-Rz-LeO" sceneMemberID="viewController">
+                <collectionViewController id="jcz-Rz-LeO" customClass="SavedListingsCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="ptF-ds-k7l">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -23,6 +23,8 @@
 
 @implementation SingleListingDetailsViewController
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }

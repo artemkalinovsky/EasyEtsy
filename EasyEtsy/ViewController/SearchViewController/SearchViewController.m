@@ -30,6 +30,8 @@
     return _listingCategories;
 }
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }

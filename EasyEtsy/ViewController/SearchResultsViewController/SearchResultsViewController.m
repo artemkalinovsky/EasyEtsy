@@ -38,6 +38,8 @@
     return _fetchedActiveListings;
 }
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

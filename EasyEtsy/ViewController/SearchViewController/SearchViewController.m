@@ -14,10 +14,10 @@
 
 @interface SearchViewController () <UISearchBarDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) NSArray *listingCategories;
-@property (assign, nonatomic) NSUInteger selectedListingCategoryIndex;
+@property(weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property(weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property(strong, nonatomic) NSArray *listingCategories;
+@property(assign, nonatomic) NSUInteger selectedListingCategoryIndex;
 
 @end
 
@@ -25,7 +25,7 @@
 
 - (NSArray *)listingCategories {
     if (!_listingCategories) {
-        _listingCategories = [[NSArray alloc]init];
+        _listingCategories = [[NSArray alloc] init];
     }
     return _listingCategories;
 }
@@ -80,12 +80,32 @@
 
 #pragma mark - Navigation
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:toSearchResultsSegue]) {
+        if (!self.searchBar.text || [self.searchBar.text isEqualToString:@""]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Info"
+                                                            message:@"Add some keywords"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:toSearchResultsSegue]) {
         ListingCategory *selectedListingCategory = self.listingCategories[self.selectedListingCategoryIndex];
         SearchResultsViewController *destinationVC = segue.destinationViewController;
         destinationVC.searchParams = @{@"category" : selectedListingCategory.categoryName, @"keywords" : self.searchBar.text};
     }
+}
+
+#pragma mark - IBActions
+
+- (IBAction)tapOnSubmitButton:(UIButton *)sender {
 }
 
 @end

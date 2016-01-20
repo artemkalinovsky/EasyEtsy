@@ -12,8 +12,6 @@
 #import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
 #import "Listing.h"
-#import "TFHppleElement.h"
-#import "TFHpple.h"
 #import "DBGHTMLEntityDecoder.h"
 
 @interface EtsyWebServiceAPI ()
@@ -146,14 +144,6 @@
     [self.afhttpRequestOperation resume];
 }
 
-- (void)cancelRequest {
-    [SVProgressHUD dismiss];
-    if (self.afhttpRequestOperation.isExecuting) {
-        [self.afhttpRequestOperation cancel];
-        self.afhttpRequestOperation = nil;
-    }
-}
-
 #pragma mark - Private Methods
 
 - (NSArray *)fetchListingCategoriesFromServerResponse:(NSArray *)categoriesResponse {
@@ -189,7 +179,6 @@
             listing.detailedDescription = [decoder decodeString:activeListingDict[@"description"]];
             listing.price = activeListingDict[@"price"];
             listing.priceCurrency = activeListingDict[@"currency_code"];
-//            listing.imageURLString = [self fetchImagePathFromURLString:activeListingDict[@"url"]];
             [fetchedListings addObject:listing];
         }
         @catch (NSException *e) {
@@ -209,17 +198,6 @@
         }
     }
     return url;
-}
-
-- (NSString *)fetchImagePathFromURLString:(NSString *)urlString {
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSData *htmlData = [NSData dataWithContentsOfURL:url];
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData:htmlData];
-    NSString *listingImageXPathQueryString = @"//meta[@property='og:image']";
-    NSArray *matchedNodes = [htmlParser searchWithXPathQuery:listingImageXPathQueryString];
-    TFHppleElement *element = [matchedNodes firstObject];
-    NSString *photoURLString = element.attributes[@"content"];
-    return photoURLString;
 }
 
 @end

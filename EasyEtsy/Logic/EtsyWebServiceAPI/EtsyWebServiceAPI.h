@@ -24,6 +24,4 @@ typedef void (^EtsyWebServiceAPIResponse)(NSArray *, NSError *);
 - (void)fetchImageURLForListing:(Listing *)listing
                      completion:(void (^)(NSString *imageURLString, NSError *error))completionBlock;
 
-- (void)cancelRequest;
-
 @end

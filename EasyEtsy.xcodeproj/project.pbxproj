@@ -20,6 +20,7 @@
 		C84043E81B8F0DCB00C15C9E /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043E71B8F0DCB00C15C9E /* Listing.m */; };
 		C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */; };
 		C85219711B8FBF37002CB974 /* SingleListingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85219701B8FBF37002CB974 /* SingleListingDetailsViewController.m */; };
+		C8D2194B1C502BA300937D4B /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D2194A1C502BA300937D4B /* NSString+Extensions.m */; };
 		C8DC8A1F1B8E4135002D395B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A1E1B8E4135002D395B /* main.m */; };
 		C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A211B8E4135002D395B /* AppDelegate.m */; };
 		C8DC8A2B1B8E4135002D395B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8DC8A291B8E4135002D395B /* Main.storyboard */; };
@@ -64,6 +65,8 @@
 		C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Listing+Extensions.m"; sourceTree = "<group>"; };
 		C852196F1B8FBF37002CB974 /* SingleListingDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleListingDetailsViewController.h; sourceTree = "<group>"; };
 		C85219701B8FBF37002CB974 /* SingleListingDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleListingDetailsViewController.m; sourceTree = "<group>"; };
+		C8D219491C502BA300937D4B /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
+		C8D2194A1C502BA300937D4B /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		C8DC8A191B8E4135002D395B /* EasyEtsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEtsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DC8A1D1B8E4135002D395B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8DC8A1E1B8E4135002D395B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -236,6 +239,15 @@
 			path = SingleListingDetailsViewController;
 			sourceTree = "<group>";
 		};
+		C8D219481C502B8200937D4B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C8D219491C502BA300937D4B /* NSString+Extensions.h */,
+				C8D2194A1C502BA300937D4B /* NSString+Extensions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		C8DC8A101B8E4134002D395B = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +271,7 @@
 		C8DC8A1B1B8E4135002D395B /* EasyEtsy */ = {
 			isa = PBXGroup;
 			children = (
+				C8D219481C502B8200937D4B /* Categories */,
 				C84043E11B8F088500C15C9E /* Constants */,
 				C84043D81B8F03B400C15C9E /* View */,
 				C8DC8A201B8E4135002D395B /* AppDelegate.h */,
@@ -435,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D2194B1C502BA300937D4B /* NSString+Extensions.m in Sources */,
 				C84043E01B8F050A00C15C9E /* SearchResultsViewController.m in Sources */,
 				C81C62E61B8E60400062E761 /* EtsyWebServiceAPI.m in Sources */,
 				C81C62E91B8E60A70062E761 /* EtsyWebServiceAPIConstants.m in Sources */,

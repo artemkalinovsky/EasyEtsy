@@ -43,13 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Register cell classes
-//    [self.collectionView registerClass:[ListingCollectionViewCell class]
-//            forCellWithReuseIdentifier:listingCellReuseIdentifier];
-
     [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
 }

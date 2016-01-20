@@ -12,7 +12,6 @@
 #import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
 #import "Listing.h"
-#import "DBGHTMLEntityDecoder.h"
 
 @interface EtsyWebServiceAPI ()
 @property(strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
@@ -152,11 +151,7 @@
     for (NSDictionary *categoryDict in categoriesResponse) {
         @autoreleasepool {
             @try {
-                ListingCategory *listingCategory = [[ListingCategory alloc] init];
-                listingCategory.categoryId = categoryDict[@"category_id"];
-                listingCategory.categoryName = categoryDict[@"category_name"];
-                listingCategory.categoryShortName = categoryDict[@"short_name"];
-                listingCategory.categoryLongName = categoryDict[@"long_name"];
+                ListingCategory *listingCategory = [[ListingCategory alloc] initWithJSON:categoryDict];
                 [fetchedCategories addObject:listingCategory];
             }
             @catch (NSException *e) {
@@ -169,16 +164,10 @@
 
 - (NSArray *)fetchActiveListingsFromServerResponse:(NSArray *)activeListingsResponse {
     NSMutableArray *fetchedListings = [[NSMutableArray alloc] init];
-    DBGHTMLEntityDecoder *decoder = [[DBGHTMLEntityDecoder alloc] init];
 
     for (NSDictionary *activeListingDict in activeListingsResponse) {
         @try {
-            Listing *listing = [[Listing alloc] init];
-            listing.listingId = activeListingDict[@"listing_id"];
-            listing.name = [decoder decodeString:activeListingDict[@"title"]];
-            listing.detailedDescription = [decoder decodeString:activeListingDict[@"description"]];
-            listing.price = activeListingDict[@"price"];
-            listing.priceCurrency = activeListingDict[@"currency_code"];
+            Listing *listing = [[Listing alloc] initWithJSON:activeListingDict];
             [fetchedListings addObject:listing];
         }
         @catch (NSException *e) {

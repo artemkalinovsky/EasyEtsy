@@ -10,4 +10,14 @@
 
 @implementation ListingCategory
 
+- (instancetype)initWithJSON:(NSDictionary *)jsonSerializedCategory {
+    if (self = [super init]) {
+        self.categoryId = jsonSerializedCategory[@"category_id"];
+        self.categoryName = jsonSerializedCategory[@"category_name"];
+        self.categoryShortName = jsonSerializedCategory[@"short_name"];
+        self.categoryLongName = jsonSerializedCategory[@"long_name"];
+    }
+    return self;
+}
+
 @end

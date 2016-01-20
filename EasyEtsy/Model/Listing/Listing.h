@@ -20,5 +20,7 @@
 @property (nonatomic, retain) NSString * priceCurrency;
 
 - (instancetype)init;
+- (instancetype)initWithJSON:(NSDictionary *)jsonSerializedListing;
+- (void)saveToBookmarks;
 
 @end

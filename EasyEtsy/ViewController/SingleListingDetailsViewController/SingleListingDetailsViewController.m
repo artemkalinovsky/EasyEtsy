@@ -59,15 +59,16 @@
 
 - (IBAction)tapOnSaveBarButton:(UIBarButtonItem *)sender {
 
-    Listing *savingListing = [Listing MR_createEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
-    savingListing.listingId = self.detailedListing.listingId;
-    savingListing.imageURLString = self.detailedListing.imageURLString;
-    savingListing.name = self.detailedListing.name;
-    savingListing.detailedDescription = self.detailedListing.detailedDescription;
-    savingListing.price = self.detailedListing.price;
-    savingListing.priceCurrency = self.detailedListing.priceCurrency;
-    
-    [[NSManagedObjectContext MR_rootSavingContext] save:nil];
+    [self.detailedListing saveToBookmarks];
+//    Listing *savingListing = [Listing MR_createEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
+//    savingListing.listingId = self.detailedListing.listingId;
+//    savingListing.imageURLString = self.detailedListing.imageURLString;
+//    savingListing.name = self.detailedListing.name;
+//    savingListing.detailedDescription = self.detailedListing.detailedDescription;
+//    savingListing.price = self.detailedListing.price;
+//    savingListing.priceCurrency = self.detailedListing.priceCurrency;
+//
+//    [[NSManagedObjectContext MR_rootSavingContext] save:nil];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                            target:self

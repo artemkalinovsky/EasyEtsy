@@ -15,4 +15,6 @@
 @property (strong, nonatomic) NSString *categoryShortName;
 @property (strong, nonatomic) NSString *categoryLongName;
 
+- (instancetype)initWithJSON:(NSDictionary *)jsonSerializedCategory;
+
 @end

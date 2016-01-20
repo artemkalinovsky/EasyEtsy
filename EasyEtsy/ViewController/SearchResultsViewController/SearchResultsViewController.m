@@ -49,22 +49,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    __weak typeof(self) weakSelf = self;
-    [[EtsyWebServiceAPI sharedManager] fetchDataForAPIModelName:APIModelNameListing
-                                                     parameters:self.searchParams
-                                                     completion:^(NSArray *listings, NSError *error) {
-                                                         if (!error && listings) {
-                                                             weakSelf.fetchedActiveListings = listings;
-                                                             [weakSelf.collectionView reloadData];
-                                                         } else {
-                                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                                             message:error.localizedDescription
-                                                                                                            delegate:self
-                                                                                                   cancelButtonTitle:@"OK"
-                                                                                                   otherButtonTitles:nil];
-                                                             [alert show];
-                                                         }
-                                                     }];
+    [self refreshAction];
 }
 
 - (void)didReceiveMemoryWarning {

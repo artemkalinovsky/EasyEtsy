@@ -21,6 +21,8 @@
 
 - (instancetype)init;
 - (instancetype)initWithJSON:(NSDictionary *)jsonSerializedListing;
+
 - (void)saveToBookmarks;
+- (void)removeFromBookmarks;
 
 @end

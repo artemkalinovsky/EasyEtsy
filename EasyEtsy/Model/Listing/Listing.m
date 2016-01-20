@@ -10,6 +10,8 @@
 #import "MagicalRecordShorthandMethodAliases.h"
 #import "NSString+Extensions.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
+#import "NSManagedObject+MagicalRecord.h"
 
 @implementation Listing
 
@@ -46,6 +48,11 @@
 
 - (void)saveToBookmarks {
     [[NSManagedObjectContext MR_rootSavingContext] insertObject:self];
+    [[NSManagedObjectContext MR_rootSavingContext] save:nil];
+}
+
+- (void)removeFromBookmarks {
+    [self MR_deleteEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
     [[NSManagedObjectContext MR_rootSavingContext] save:nil];
 }
 

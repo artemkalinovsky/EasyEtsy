@@ -66,10 +66,7 @@
 }
 
 - (IBAction)tapOnTrashBarButton:(UIBarButtonItem *)sender {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"listingId == %@", self.detailedListing.listingId];
-    NSArray *savedListings = [Listing MR_findAllInContext:[NSManagedObjectContext MR_rootSavingContext]];
-    Listing *listingToDelete = [[savedListings filteredArrayUsingPredicate:predicate] firstObject];
-    [listingToDelete MR_deleteEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
+    [self.detailedListing removeFromBookmarks];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

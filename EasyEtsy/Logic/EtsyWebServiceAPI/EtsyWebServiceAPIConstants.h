@@ -13,3 +13,8 @@ extern NSString* const kEtsyAPIKey;
 extern NSString* const kEtsyAPICategories;
 extern NSString* const kEtsyAPIActiveListings;
 extern NSString* const kEtsyAPIListingImages;
+
+typedef NS_ENUM(NSInteger, APIModelName) {
+    APIModelNameCategory,
+    APIModelNameListing
+};

@@ -9,7 +9,6 @@
 #import "EtsyWebServiceAPI.h"
 #import "AFHTTPRequestOperation.h"
 #import "SVProgressHUD.h"
-#import "EtsyWebServiceAPIConstants.h"
 #import "ListingCategory.h"
 #import "Listing.h"
 
@@ -42,46 +41,19 @@
 
 #pragma mark - Public API Methods
 
-- (void)fetchListingCategoriesWithCompletion:(EtsyWebServiceAPIResponse)completionBlock {
-    NSDictionary *params = @{@"api_key" : kEtsyAPIKey};
-    NSString *urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPICategories];
-
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                          URLString:urlString
-                                                                         parameters:params
-                                                                              error:nil];
-
-    self.afhttpRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.afhttpRequestOperation.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    __weak typeof(self) weakSelf = self;
-    [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSArray *categoriesResponse = responseObject[@"results"];
-                NSArray *categories = [weakSelf fetchListingCategoriesFromServerResponse:categoriesResponse];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completionBlock(categories, nil);
-                    [SVProgressHUD dismiss];
-                });
-            }
-                                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [SVProgressHUD dismiss];
-                                                               completionBlock(nil, error);
-                                                           });
-                                                       }];
-
-    [[NSOperationQueue mainQueue] addOperation:self.afhttpRequestOperation];
-    [SVProgressHUD show];
-    [self.afhttpRequestOperation resume];
-}
-
-- (void)fetchActiveListingsWithParameters:(NSDictionary *)parameters
-                               completion:(EtsyWebServiceAPIResponse)completionBlock {
+- (void)fetchDataForAPIModelName:(APIModelName)apiModelName
+                         parameters:(NSDictionary *)parameters
+                         completion:(EtsyWebServiceAPIResponse)completion {
 
     NSMutableDictionary *params = [@{@"api_key" : kEtsyAPIKey} mutableCopy];
-    [params addEntriesFromDictionary:parameters];
+    NSString *urlString;
 
-    NSString *urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIActiveListings];
+    if (apiModelName == APIModelNameListing && parameters) {
+        urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIActiveListings];
+        [params addEntriesFromDictionary:parameters];
+    } else if (apiModelName == APIModelNameCategory) {
+        urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPICategories];
+    }
 
     NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
                                                                           URLString:urlString
@@ -93,24 +65,25 @@
 
     __weak typeof(self) weakSelf = self;
     [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSArray *listingsResponse = responseObject[@"results"];
-                NSArray *activeListings = [weakSelf fetchActiveListingsFromServerResponse:listingsResponse];
+                NSArray *fetchedResults = responseObject[@"results"];
+                NSArray *parsedModels = [weakSelf parseFetchedJSONModels:fetchedResults
+                                                       forAPIModelName:apiModelName];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completionBlock(activeListings, nil);
+                    completion(parsedModels, nil);
                     [SVProgressHUD dismiss];
                 });
-
             }
                                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                                [SVProgressHUD dismiss];
-                                                               completionBlock(nil, error);
+                                                               completion(nil, error);
                                                            });
                                                        }];
 
     [[NSOperationQueue mainQueue] addOperation:self.afhttpRequestOperation];
     [SVProgressHUD show];
     [self.afhttpRequestOperation resume];
+
 }
 
 - (void)fetchImageURLForListing:(Listing *)listing
@@ -145,37 +118,34 @@
 
 #pragma mark - Private Methods
 
-- (NSArray *)fetchListingCategoriesFromServerResponse:(NSArray *)categoriesResponse {
-    NSMutableArray *fetchedCategories = [[NSMutableArray alloc] init];
+- (NSArray *)parseFetchedJSONModels:(NSArray *)jsonSerializedModels
+                    forAPIModelName:(APIModelName)fetchedModelName {
 
-    for (NSDictionary *categoryDict in categoriesResponse) {
-        @autoreleasepool {
-            @try {
-                ListingCategory *listingCategory = [[ListingCategory alloc] initWithJSON:categoryDict];
-                [fetchedCategories addObject:listingCategory];
-            }
-            @catch (NSException *e) {
+    NSMutableArray *parsedModels = [[NSMutableArray alloc] init];
 
-            }
-        }
-    }
-    return fetchedCategories;
-}
-
-- (NSArray *)fetchActiveListingsFromServerResponse:(NSArray *)activeListingsResponse {
-    NSMutableArray *fetchedListings = [[NSMutableArray alloc] init];
-
-    for (NSDictionary *activeListingDict in activeListingsResponse) {
+    for (NSDictionary *jsonSerializedModel in jsonSerializedModels) {
         @try {
-            Listing *listing = [[Listing alloc] initWithJSON:activeListingDict];
-            [fetchedListings addObject:listing];
+            switch (fetchedModelName) {
+                case APIModelNameCategory: {
+                    ListingCategory *listingCategory = [[ListingCategory alloc] initWithJSON:jsonSerializedModel];
+                    [parsedModels addObject:listingCategory];
+                    break;
+                }
+                case APIModelNameListing: {
+                    Listing *listing = [[Listing alloc] initWithJSON:jsonSerializedModel];
+                    [parsedModels addObject:listing];
+                    break;
+                }
+                default:
+                    NSLog(@"Trying to parse unknown model.");
+                    break;
+            }
         }
         @catch (NSException *e) {
 
         }
-
     }
-    return fetchedListings;
+    return parsedModels;
 }
 
 - (NSString *)fetchFullSizedImageURLFromImagesResponse:(NSArray *)imagesResponse {

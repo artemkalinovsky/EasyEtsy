@@ -40,19 +40,21 @@
     [super viewWillAppear:animated];
 
     __weak typeof(self) weakSelf = self;
-    [[EtsyWebServiceAPI sharedManager] fetchListingCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
-        if (!error && categories) {
-            weakSelf.listingCategories = categories;
-            [weakSelf.pickerView reloadAllComponents];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:error.localizedDescription
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-    }];
+    [[EtsyWebServiceAPI sharedManager] fetchDataForAPIModelName:APIModelNameCategory
+                                                     parameters:nil
+                                                     completion:^(NSArray *categories, NSError *error) {
+                                                         if (!error && categories) {
+                                                             weakSelf.listingCategories = categories;
+                                                             [weakSelf.pickerView reloadAllComponents];
+                                                         } else {
+                                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                                             message:error.localizedDescription
+                                                                                                            delegate:self
+                                                                                                   cancelButtonTitle:@"OK"
+                                                                                                   otherButtonTitles:nil];
+                                                             [alert show];
+                                                         }
+                                                     }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -29,7 +29,7 @@
                                                                 inManagedObjectContext:[NSManagedObjectContext MR_rootSavingContext]];
 
     self = (Listing *)[[NSManagedObject alloc] initWithEntity:listingEntityDescription
-                            insertIntoManagedObjectContext:nil];
+                               insertIntoManagedObjectContext:nil];
     return self;
 }
 

@@ -12,6 +12,7 @@
 #import "NSManagedObject+MagicalRecord.h"
 #import "NSManagedObject+MagicalFinders.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
+#import "UILabel+UILabelDynamicHeight.h"
 
 @interface SingleListingDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *listingImageView;
@@ -43,7 +44,7 @@
                                                                                                target:self
                                                                                                action:@selector(tapOnTrashBarButton:)];
     }
-
+    
     self.listingImageView.image = self.detailedListingImage;
     self.listingNameLabel.text = self.detailedListing.name;
     self.listingPriceLabel.text = [NSString stringWithFormat:@"%@ %@", self.detailedListing.price, self.detailedListing.priceCurrency];
@@ -52,13 +53,23 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+}
 
+#pragma mark - UITableViewDelegate
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3) {
+        return [self.listingDetailedDescriptionLabel sizeOfMultiLineLabel].height;
+    } else {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
 }
 
 #pragma mark - IBActions
 
 - (IBAction)tapOnSaveBarButton:(UIBarButtonItem *)sender {
-
+    
     [self.detailedListing saveToBookmarks];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
                                                                                            target:self

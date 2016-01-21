@@ -20,6 +20,7 @@
 		C84043E81B8F0DCB00C15C9E /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043E71B8F0DCB00C15C9E /* Listing.m */; };
 		C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */; };
 		C85219711B8FBF37002CB974 /* SingleListingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85219701B8FBF37002CB974 /* SingleListingDetailsViewController.m */; };
+		C8BB22471C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BB22461C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.m */; };
 		C8D2194B1C502BA300937D4B /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D2194A1C502BA300937D4B /* NSString+Extensions.m */; };
 		C8DC8A1F1B8E4135002D395B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A1E1B8E4135002D395B /* main.m */; };
 		C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A211B8E4135002D395B /* AppDelegate.m */; };
@@ -65,6 +66,8 @@
 		C84043EA1B8F0E5800C15C9E /* Listing+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Listing+Extensions.m"; sourceTree = "<group>"; };
 		C852196F1B8FBF37002CB974 /* SingleListingDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleListingDetailsViewController.h; sourceTree = "<group>"; };
 		C85219701B8FBF37002CB974 /* SingleListingDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleListingDetailsViewController.m; sourceTree = "<group>"; };
+		C8BB22451C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+UILabelDynamicHeight.h"; sourceTree = "<group>"; };
+		C8BB22461C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+UILabelDynamicHeight.m"; sourceTree = "<group>"; };
 		C8D219491C502BA300937D4B /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		C8D2194A1C502BA300937D4B /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		C8DC8A191B8E4135002D395B /* EasyEtsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEtsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +247,8 @@
 			children = (
 				C8D219491C502BA300937D4B /* NSString+Extensions.h */,
 				C8D2194A1C502BA300937D4B /* NSString+Extensions.m */,
+				C8BB22451C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.h */,
+				C8BB22461C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				C84043EB1B8F0E5800C15C9E /* Listing+Extensions.m in Sources */,
 				C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */,
 				C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */,
+				C8BB22471C50641D00A7EC23 /* UILabel+UILabelDynamicHeight.m in Sources */,
 				C84043DC1B8F046800C15C9E /* ListingCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@ target 'EasyEtsy' do
   pod 'SVProgressHUD'
   pod 'SDWebImage'
   pod 'DBGHTMLEntities'
+  pod 'CCBottomRefreshControl'
   pod 'hpple'
 end
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AFC8DC842B3C5D924E65FAEA /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A5F6569E28FE154623AA9B /* libPods-EasyEtsy.a */; };
+		56C4634BB847BF87C6F8F243 /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B8C289057B1A76F85CA43 /* libPods-EasyEtsy.a */; };
 		C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */; };
 		C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */; };
 		C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62DC1B8E58230062E761 /* SearchViewController.m */; };
@@ -28,6 +28,7 @@
 		C8DC8A2D1B8E4135002D395B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8DC8A2C1B8E4135002D395B /* Images.xcassets */; };
 		C8DC8A301B8E4135002D395B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8DC8A2E1B8E4135002D395B /* LaunchScreen.xib */; };
 		C8DC8A3C1B8E4135002D395B /* EasyEtsyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DC8A3B1B8E4135002D395B /* EasyEtsyTests.m */; };
+		D3B3F161042501E61DEA0E8A /* libPods-EasyEtsyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05D4339E3FBB51BD17418801 /* libPods-EasyEtsyTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AA3B8C065EAB1077FD97133 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
-		BEBD680F1B335DBFD56C81D5 /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
+		05D4339E3FBB51BD17418801 /* libPods-EasyEtsyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyEtsyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42208A473399A155CF17E6BF /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
+		C14BCCF9F656B21480333340 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
 		C80EE0051B9128920047EC71 /* SavedListingsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedListingsCollectionViewController.h; sourceTree = "<group>"; };
 		C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedListingsCollectionViewController.m; sourceTree = "<group>"; };
 		C81C62D81B8E50700062E761 /* EasyEtsy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyEtsy.xcdatamodel; sourceTree = "<group>"; };
@@ -81,7 +83,9 @@
 		C8DC8A351B8E4135002D395B /* EasyEtsyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyEtsyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DC8A3A1B8E4135002D395B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8DC8A3B1B8E4135002D395B /* EasyEtsyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyEtsyTests.m; sourceTree = "<group>"; };
-		D6A5F6569E28FE154623AA9B /* libPods-EasyEtsy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyEtsy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9B8C289057B1A76F85CA43 /* libPods-EasyEtsy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyEtsy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EABBC268DA1E7652E20D1AD0 /* Pods-EasyEtsyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsyTests/Pods-EasyEtsyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F1F700846DA746328F3AB373 /* Pods-EasyEtsyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsyTests/Pods-EasyEtsyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFC8DC842B3C5D924E65FAEA /* libPods-EasyEtsy.a in Frameworks */,
+				56C4634BB847BF87C6F8F243 /* libPods-EasyEtsy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,25 +101,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B3F161042501E61DEA0E8A /* libPods-EasyEtsyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		689405901DC2571BA1E0A7C2 /* Frameworks */ = {
+		0795D9A406ED5D61B1C07F1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6A5F6569E28FE154623AA9B /* libPods-EasyEtsy.a */,
+				EA9B8C289057B1A76F85CA43 /* libPods-EasyEtsy.a */,
+				05D4339E3FBB51BD17418801 /* libPods-EasyEtsyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AAE15634DCC5033B8B987E3D /* Pods */ = {
+		12607F031C88B33725C64C48 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BEBD680F1B335DBFD56C81D5 /* Pods-EasyEtsy.debug.xcconfig */,
-				0AA3B8C065EAB1077FD97133 /* Pods-EasyEtsy.release.xcconfig */,
+				42208A473399A155CF17E6BF /* Pods-EasyEtsy.debug.xcconfig */,
+				C14BCCF9F656B21480333340 /* Pods-EasyEtsy.release.xcconfig */,
+				EABBC268DA1E7652E20D1AD0 /* Pods-EasyEtsyTests.debug.xcconfig */,
+				F1F700846DA746328F3AB373 /* Pods-EasyEtsyTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -259,8 +267,8 @@
 				C8DC8A1B1B8E4135002D395B /* EasyEtsy */,
 				C8DC8A381B8E4135002D395B /* EasyEtsyTests */,
 				C8DC8A1A1B8E4135002D395B /* Products */,
-				AAE15634DCC5033B8B987E3D /* Pods */,
-				689405901DC2571BA1E0A7C2 /* Frameworks */,
+				12607F031C88B33725C64C48 /* Pods */,
+				0795D9A406ED5D61B1C07F1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,11 +333,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8DC8A3F1B8E4135002D395B /* Build configuration list for PBXNativeTarget "EasyEtsy" */;
 			buildPhases = (
-				D524248178EE924435FCB3FD /* Check Pods Manifest.lock */,
+				73D847235D1D644FEB30497F /* Check Pods Manifest.lock */,
 				C8DC8A151B8E4135002D395B /* Sources */,
 				C8DC8A161B8E4135002D395B /* Frameworks */,
 				C8DC8A171B8E4135002D395B /* Resources */,
-				0CD1E10B87D5D082704EEE16 /* Copy Pods Resources */,
+				AE7C38F0686E71D1FB80BA4D /* Embed Pods Frameworks */,
+				2791988AC69FF6875A2C4031 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,9 +353,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8DC8A421B8E4135002D395B /* Build configuration list for PBXNativeTarget "EasyEtsyTests" */;
 			buildPhases = (
+				A73B13D858AB253E21A909A1 /* Check Pods Manifest.lock */,
 				C8DC8A311B8E4135002D395B /* Sources */,
 				C8DC8A321B8E4135002D395B /* Frameworks */,
 				C8DC8A331B8E4135002D395B /* Resources */,
+				6673A56823A2AB42982F1CFF /* Embed Pods Frameworks */,
+				FCA70FC14CE2CA0F9C129AED /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,7 +428,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0CD1E10B87D5D082704EEE16 /* Copy Pods Resources */ = {
+		2791988AC69FF6875A2C4031 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,7 +443,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D524248178EE924435FCB3FD /* Check Pods Manifest.lock */ = {
+		6673A56823A2AB42982F1CFF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyEtsyTests/Pods-EasyEtsyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73D847235D1D644FEB30497F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,6 +471,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A73B13D858AB253E21A909A1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE7C38F0686E71D1FB80BA4D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCA70FC14CE2CA0F9C129AED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyEtsyTests/Pods-EasyEtsyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -590,7 +662,7 @@
 		};
 		C8DC8A401B8E4135002D395B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEBD680F1B335DBFD56C81D5 /* Pods-EasyEtsy.debug.xcconfig */;
+			baseConfigurationReference = 42208A473399A155CF17E6BF /* Pods-EasyEtsy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EasyEtsy/Info.plist;
@@ -602,7 +674,7 @@
 		};
 		C8DC8A411B8E4135002D395B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AA3B8C065EAB1077FD97133 /* Pods-EasyEtsy.release.xcconfig */;
+			baseConfigurationReference = C14BCCF9F656B21480333340 /* Pods-EasyEtsy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EasyEtsy/Info.plist;
@@ -614,6 +686,7 @@
 		};
 		C8DC8A431B8E4135002D395B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABBC268DA1E7652E20D1AD0 /* Pods-EasyEtsyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -633,6 +706,7 @@
 		};
 		C8DC8A441B8E4135002D395B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1F700846DA746328F3AB373 /* Pods-EasyEtsyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

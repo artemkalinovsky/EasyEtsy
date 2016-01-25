@@ -42,8 +42,8 @@
 #pragma mark - Public API Methods
 
 - (void)fetchDataForAPIModelName:(APIModelName)apiModelName
-                         parameters:(NSDictionary *)parameters
-                         completion:(EtsyWebServiceAPIResponse)completion {
+                      parameters:(NSDictionary *)parameters
+                      completion:(EtsyWebServiceAPIResponse)completion {
 
     NSMutableDictionary *params = [@{@"api_key" : kEtsyAPIKey} mutableCopy];
     NSString *urlString;
@@ -67,7 +67,7 @@
     [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSArray *fetchedResults = responseObject[@"results"];
                 NSArray *parsedModels = [weakSelf parseFetchedJSONModels:fetchedResults
-                                                       forAPIModelName:apiModelName];
+                                                         forAPIModelName:apiModelName];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(parsedModels, nil);
                     [SVProgressHUD dismiss];

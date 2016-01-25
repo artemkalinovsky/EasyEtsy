@@ -11,6 +11,6 @@ target 'EasyEtsy' do
   pod 'hpple'
 end
 
-target 'EasyEtsyTests' do
-
+target 'EasyEtsyTests', :exclusive => true do
+  pod 'KIF', :configurations => ['Debug']
 end

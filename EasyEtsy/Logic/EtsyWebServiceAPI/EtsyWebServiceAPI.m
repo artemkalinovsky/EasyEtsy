@@ -86,36 +86,6 @@
 
 }
 
-- (void)fetchImageURLForListing:(Listing *)listing
-                     completion:(void (^)(NSString *imageURLString, NSError *error))completionBlock {
-
-    NSDictionary *params = @{@"api_key" : kEtsyAPIKey};
-
-    NSString *urlString = [[kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIListingImages] stringByReplacingOccurrencesOfString:@":listing_id"
-                                                                                                                     withString:listing.listingId.stringValue];
-
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                          URLString:urlString
-                                                                         parameters:params
-                                                                              error:nil];
-
-    self.afhttpRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.afhttpRequestOperation.responseSerializer = [AFJSONResponseSerializer serializer];
-
-    __weak typeof(self) weakSelf = self;
-    [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSArray *listingImagesResponse = responseObject[@"results"];
-                NSString *fullImageURLString = [weakSelf fetchFullSizedImageURLFromImagesResponse:listingImagesResponse];
-                completionBlock(fullImageURLString, nil);
-            }
-                                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                           completionBlock(nil, error);
-                                                       }];
-
-    [[NSOperationQueue mainQueue] addOperation:self.afhttpRequestOperation];
-    [self.afhttpRequestOperation resume];
-}
-
 #pragma mark - Private Methods
 
 - (NSArray *)parseFetchedJSONModels:(NSArray *)jsonSerializedModels
@@ -146,17 +116,6 @@
         }
     }
     return parsedModels;
-}
-
-- (NSString *)fetchFullSizedImageURLFromImagesResponse:(NSArray *)imagesResponse {
-    NSString *url = nil;
-    for (NSDictionary *listingImageDict in imagesResponse) {
-        if ([listingImageDict[@"rank"] isEqual:@1]) {
-            url = listingImageDict[@"url_fullxfull"];
-            return url;
-        }
-    }
-    return url;
 }
 
 @end

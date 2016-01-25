@@ -9,8 +9,6 @@
 
 @import Foundation;
 
-@class Listing;
-
 typedef void (^EtsyWebServiceAPIResponse)(NSArray *, NSError *);
 
 @interface EtsyWebServiceAPI : NSObject
@@ -20,8 +18,5 @@ typedef void (^EtsyWebServiceAPIResponse)(NSArray *, NSError *);
 - (void)fetchDataForAPIModelName:(APIModelName)apiModelName
                       parameters:(NSDictionary *)parameters
                       completion:(EtsyWebServiceAPIResponse)completion;
-
-- (void)fetchImageURLForListing:(Listing *)listing
-                     completion:(void (^)(NSString *imageURLString, NSError *error))completionBlock;
 
 @end

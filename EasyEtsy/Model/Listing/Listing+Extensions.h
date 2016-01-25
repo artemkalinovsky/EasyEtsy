@@ -10,4 +10,6 @@
 
 @interface Listing (Extensions)
 
+- (void)fetchListingImageWithCompletion:(void (^)(UIImage *image))completion;
+
 @end

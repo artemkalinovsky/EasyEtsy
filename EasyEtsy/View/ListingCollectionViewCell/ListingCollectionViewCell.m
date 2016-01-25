@@ -7,7 +7,7 @@
 //
 
 #import "ListingCollectionViewCell.h"
-#import "Listing.h"
+#import "Listing+Extensions.h"
 #import "EtsyWebServiceAPI.h"
 
 NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";

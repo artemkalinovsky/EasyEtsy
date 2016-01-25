@@ -9,8 +9,6 @@
 @import Foundation;
 @import CoreData;
 
-@class UIImage;
-
 @interface Listing : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * listingId;
@@ -25,6 +23,5 @@
 
 - (void)saveToBookmarks;
 - (void)removeFromBookmarks;
-- (void)fetchListingImageWithCompletion:(void (^)(UIImage *image))completion;
 
 @end

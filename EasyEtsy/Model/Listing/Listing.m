@@ -7,11 +7,12 @@
 //
 
 #import "Listing.h"
-#import "MagicalRecordShorthandMethodAliases.h"
 #import "NSString+Extensions.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
-#import "NSManagedObject+MagicalFinders.h"
 #import "NSManagedObject+MagicalRecord.h"
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+#import "EtsyWebServiceAPI.h"
 
 @implementation Listing
 
@@ -54,6 +55,41 @@
 - (void)removeFromBookmarks {
     [self MR_deleteEntityInContext:[NSManagedObjectContext MR_rootSavingContext]];
     [[NSManagedObjectContext MR_rootSavingContext] save:nil];
+}
+
+- (void)fetchListingImageWithCompletion:(void (^)(UIImage *image))completion {
+    __weak typeof(self) weakSelf = self;
+    if (!self.imageURLString) {
+        [[EtsyWebServiceAPI sharedManager] fetchImageURLForListing:self
+                                                        completion:^(NSString *imageURL, NSError *error) {
+                                                            if (!error && imageURL) {
+                                                                weakSelf.imageURLString = imageURL;
+                                                                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.imageURLString]
+                                                                                                                options:0
+                                                                                                               progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                                                                               }
+                                                                                                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                                                                                  if (image) {
+                                                                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                                                                          completion(image);
+                                                                                                                      });
+                                                                                                                  }
+                                                                                                              }];
+                                                            };
+                                                        }];
+    } else {
+        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.imageURLString]
+                                                        options:0
+                                                       progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                       }
+                                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                          if (image) {
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  completion(image);
+                                                              });
+                                                          }
+                                                      }];
+    }
 }
 
 @end

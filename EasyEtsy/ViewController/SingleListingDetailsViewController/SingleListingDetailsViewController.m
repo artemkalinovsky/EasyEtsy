@@ -44,8 +44,11 @@
                                                                                                target:self
                                                                                                action:@selector(tapOnTrashBarButton:)];
     }
-    
-    self.listingImageView.image = self.detailedListingImage;
+
+    __weak typeof(self) weakSelf = self;
+    [self.detailedListing fetchListingImageWithCompletion:^(UIImage *image) {
+        weakSelf.listingImageView.image = image;
+    }];
     self.listingNameLabel.text = self.detailedListing.name;
     self.listingPriceLabel.text = [NSString stringWithFormat:@"%@ %@", self.detailedListing.price, self.detailedListing.priceCurrency];
     self.listingDetailedDescriptionLabel.text = self.detailedListing.detailedDescription;

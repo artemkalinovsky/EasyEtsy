@@ -13,6 +13,5 @@
 @interface SingleListingDetailsViewController : UITableViewController
 
 @property (strong, nonatomic) Listing *detailedListing;
-@property (strong, nonatomic) UIImage *detailedListingImage;
 
 @end

@@ -51,8 +51,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedListingIndex = (NSUInteger) indexPath.row;
-    ListingCollectionViewCell *cell = (ListingCollectionViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
-    self.selectedListingImage = cell.listingImage;
     [self performSegueWithIdentifier:toSingleListingDetailsSegue sender:self];
 }
 
@@ -83,7 +81,6 @@
         Listing *selectedListing = self.fetchedActiveListings[self.selectedListingIndex];
         SingleListingDetailsViewController *destinationVC = segue.destinationViewController;
         destinationVC.detailedListing = selectedListing;
-        destinationVC.detailedListingImage = self.selectedListingImage;
     }
 }
 

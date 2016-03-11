@@ -12,6 +12,7 @@
 		58C7A80705DE0946291F14BA /* searchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AC552B69A69EDE0AC2FD /* searchscreen.png */; };
 		58C7AB2267BB7E62066EA3B0 /* ListingsCollectionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */; };
 		58C7AFF387C19A4BDF0F2CCB /* details.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AB7FC8892E580D1BA506 /* details.png */; };
+		ACD0096F1C9305C50030FC19 /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = ACD0096E1C9305C50030FC19 /* Screenshots */; };
 		C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */; };
 		C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */; };
 		C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62DC1B8E58230062E761 /* SearchViewController.m */; };
@@ -53,6 +54,7 @@
 		58C7AAF64141C360DC4D279F /* ListingsCollectionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingsCollectionBaseViewController.h; sourceTree = "<group>"; };
 		58C7AB7FC8892E580D1BA506 /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
 		58C7AC552B69A69EDE0AC2FD /* searchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchscreen.png; sourceTree = "<group>"; };
+		ACD0096E1C9305C50030FC19 /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
 		C14BCCF9F656B21480333340 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
 		C80EE0051B9128920047EC71 /* SavedListingsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedListingsCollectionViewController.h; sourceTree = "<group>"; };
 		C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedListingsCollectionViewController.m; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		C8DC8A101B8E4134002D395B = {
 			isa = PBXGroup;
 			children = (
+				ACD0096E1C9305C50030FC19 /* Screenshots */,
 				C8DC8A1B1B8E4135002D395B /* EasyEtsy */,
 				C8DC8A381B8E4135002D395B /* EasyEtsyTests */,
 				C8DC8A1A1B8E4135002D395B /* Products */,
@@ -447,6 +450,7 @@
 				C8DC8A2D1B8E4135002D395B /* Images.xcassets in Resources */,
 				58C7A37CCCA072AAE08246F3 /* searchresults.png in Resources */,
 				58C7A80705DE0946291F14BA /* searchscreen.png in Resources */,
+				ACD0096F1C9305C50030FC19 /* Screenshots in Resources */,
 				58C7AFF387C19A4BDF0F2CCB /* details.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

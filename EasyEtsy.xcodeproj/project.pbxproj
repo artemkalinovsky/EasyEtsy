@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		56C4634BB847BF87C6F8F243 /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B8C289057B1A76F85CA43 /* libPods-EasyEtsy.a */; };
-		58C7A37CCCA072AAE08246F3 /* searchresults.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A64EB7C3EEB62B09FE9A /* searchresults.png */; };
-		58C7A80705DE0946291F14BA /* searchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AC552B69A69EDE0AC2FD /* searchscreen.png */; };
+		58C7A7B64E6E950638DF379E /* details.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AACC8ED582A8DF4982A6 /* details.png */; };
+		58C7A8E35F9D1A4EB6C66703 /* searchresults.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7A498F58144B2E9E2BB46 /* searchresults.png */; };
 		58C7AB2267BB7E62066EA3B0 /* ListingsCollectionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */; };
-		58C7AFF387C19A4BDF0F2CCB /* details.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AB7FC8892E580D1BA506 /* details.png */; };
-		ACD0096F1C9305C50030FC19 /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = ACD0096E1C9305C50030FC19 /* Screenshots */; };
+		58C7ADDE26C8E8D68008B0B0 /* searchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 58C7AF36533EE7719956FD9F /* searchscreen.png */; };
 		C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */; };
 		C81C62D91B8E50700062E761 /* EasyEtsy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81C62D71B8E50700062E761 /* EasyEtsy.xcdatamodeld */; };
 		C81C62DD1B8E58230062E761 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81C62DC1B8E58230062E761 /* SearchViewController.m */; };
@@ -49,12 +48,11 @@
 /* Begin PBXFileReference section */
 		05D4339E3FBB51BD17418801 /* libPods-EasyEtsyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EasyEtsyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42208A473399A155CF17E6BF /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
+		58C7A498F58144B2E9E2BB46 /* searchresults.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchresults.png; sourceTree = "<group>"; };
 		58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingsCollectionBaseViewController.m; sourceTree = "<group>"; };
-		58C7A64EB7C3EEB62B09FE9A /* searchresults.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchresults.png; sourceTree = "<group>"; };
+		58C7AACC8ED582A8DF4982A6 /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
 		58C7AAF64141C360DC4D279F /* ListingsCollectionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingsCollectionBaseViewController.h; sourceTree = "<group>"; };
-		58C7AB7FC8892E580D1BA506 /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
-		58C7AC552B69A69EDE0AC2FD /* searchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchscreen.png; sourceTree = "<group>"; };
-		ACD0096E1C9305C50030FC19 /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
+		58C7AF36533EE7719956FD9F /* searchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchscreen.png; sourceTree = "<group>"; };
 		C14BCCF9F656B21480333340 /* Pods-EasyEtsy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.release.xcconfig"; sourceTree = "<group>"; };
 		C80EE0051B9128920047EC71 /* SavedListingsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedListingsCollectionViewController.h; sourceTree = "<group>"; };
 		C80EE0061B9128920047EC71 /* SavedListingsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedListingsCollectionViewController.m; sourceTree = "<group>"; };
@@ -148,12 +146,12 @@
 			path = ListingResultsBaseViewController;
 			sourceTree = "<group>";
 		};
-		58C7A2EE0299735632836C82 /* Screenshots */ = {
+		58C7AFBDD0DD304B66412A59 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				58C7A64EB7C3EEB62B09FE9A /* searchresults.png */,
-				58C7AC552B69A69EDE0AC2FD /* searchscreen.png */,
-				58C7AB7FC8892E580D1BA506 /* details.png */,
+				58C7AACC8ED582A8DF4982A6 /* details.png */,
+				58C7AF36533EE7719956FD9F /* searchscreen.png */,
+				58C7A498F58144B2E9E2BB46 /* searchresults.png */,
 			);
 			path = Screenshots;
 			sourceTree = "<group>";
@@ -295,12 +293,12 @@
 		C8DC8A101B8E4134002D395B = {
 			isa = PBXGroup;
 			children = (
-				ACD0096E1C9305C50030FC19 /* Screenshots */,
 				C8DC8A1B1B8E4135002D395B /* EasyEtsy */,
 				C8DC8A381B8E4135002D395B /* EasyEtsyTests */,
 				C8DC8A1A1B8E4135002D395B /* Products */,
 				12607F031C88B33725C64C48 /* Pods */,
 				0795D9A406ED5D61B1C07F1A /* Frameworks */,
+				58C7AFBDD0DD304B66412A59 /* Screenshots */,
 			);
 			sourceTree = "<group>";
 		};
@@ -328,7 +326,6 @@
 				C8DC8A2C1B8E4135002D395B /* Images.xcassets */,
 				C8DC8A2E1B8E4135002D395B /* LaunchScreen.xib */,
 				C8DC8A1C1B8E4135002D395B /* Supporting Files */,
-				58C7A2EE0299735632836C82 /* Screenshots */,
 			);
 			path = EasyEtsy;
 			sourceTree = "<group>";
@@ -448,10 +445,9 @@
 				C8DC8A2B1B8E4135002D395B /* Main.storyboard in Resources */,
 				C8DC8A301B8E4135002D395B /* LaunchScreen.xib in Resources */,
 				C8DC8A2D1B8E4135002D395B /* Images.xcassets in Resources */,
-				58C7A37CCCA072AAE08246F3 /* searchresults.png in Resources */,
-				58C7A80705DE0946291F14BA /* searchscreen.png in Resources */,
-				ACD0096F1C9305C50030FC19 /* Screenshots in Resources */,
-				58C7AFF387C19A4BDF0F2CCB /* details.png in Resources */,
+				58C7A7B64E6E950638DF379E /* details.png in Resources */,
+				58C7ADDE26C8E8D68008B0B0 /* searchscreen.png in Resources */,
+				58C7A8E35F9D1A4EB6C66703 /* searchresults.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

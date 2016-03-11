@@ -25,8 +25,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    super.listingsArray = [Listing MR_findAllInContext:[NSManagedObjectContext MR_rootSavingContext]];
-    [super.collectionView reloadData];
+    self.listingsArray = [Listing MR_findAllInContext:[NSManagedObjectContext MR_rootSavingContext]];
+    [self.collectionView reloadData];
 }
 
 @end

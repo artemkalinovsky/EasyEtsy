@@ -7,14 +7,11 @@
 //
 
 #import "EtsyWebServiceAPI.h"
-#import "AFHTTPRequestOperation.h"
 #import "SVProgressHUD.h"
 #import "ListingCategory.h"
 #import "Listing.h"
-
-@interface EtsyWebServiceAPI ()
-@property(strong, nonatomic) AFHTTPRequestOperation *afhttpRequestOperation;
-@end
+#import "AFURLResponseSerialization.h"
+#import "AFHTTPSessionManager.h"
 
 @implementation EtsyWebServiceAPI
 
@@ -55,16 +52,16 @@
         urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPICategories];
     }
 
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                          URLString:urlString
-                                                                         parameters:params
-                                                                              error:nil];
-
-    self.afhttpRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    self.afhttpRequestOperation.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSURL *URL = [NSURL URLWithString:urlString];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
     __weak typeof(self) weakSelf = self;
-    [self.afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [SVProgressHUD show];
+    [manager GET:URL.absoluteString
+      parameters:params
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
                 NSArray *fetchedResults = responseObject[@"results"];
                 NSArray *parsedModels = [weakSelf parseFetchedJSONModels:fetchedResults
                                                          forAPIModelName:apiModelName];
@@ -72,18 +69,12 @@
                     completion(parsedModels, nil);
                     [SVProgressHUD dismiss];
                 });
-            }
-                                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                                               [SVProgressHUD dismiss];
-                                                               completion(nil, error);
-                                                           });
-                                                       }];
-
-    [[NSOperationQueue mainQueue] addOperation:self.afhttpRequestOperation];
-    [SVProgressHUD show];
-    [self.afhttpRequestOperation resume];
-
+         } failure:^(NSURLSessionTask *operation, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil, error);
+                    [SVProgressHUD dismiss];
+                });
+            }];
 }
 
 #pragma mark - Private Methods

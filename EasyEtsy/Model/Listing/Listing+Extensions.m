@@ -7,11 +7,12 @@
 //
 
 #import <AFNetworking/AFURLRequestSerialization.h>
-#import <AFNetworking/AFHTTPRequestOperation.h>
 #import "Listing+Extensions.h"
 #import "SDImageCache.h"
 #import "UIImageView+WebCache.h"
 #import "EtsyWebServiceAPI.h"
+#import "AFURLResponseSerialization.h"
+#import "AFHTTPSessionManager.h"
 
 @implementation Listing (Extensions)
 
@@ -35,27 +36,23 @@
 
     NSString *urlString = [[kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIListingImages] stringByReplacingOccurrencesOfString:@":listing_id"
                                                                                                                      withString:self.listingId.stringValue];
-
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET"
-                                                                          URLString:urlString
-                                                                         parameters:params
-                                                                              error:nil];
-
-    AFHTTPRequestOperation *afhttpRequestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    afhttpRequestOperation.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSURL *URL = [NSURL URLWithString:urlString];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
     __weak typeof(self) weakSelf = self;
-    [afhttpRequestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:URL.absoluteString
+      parameters:params
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
                 NSArray *listingImagesResponse = responseObject[@"results"];
                 NSString *fullImageURLString = [weakSelf fetchFullSizedImageURLFromImagesResponse:listingImagesResponse];
                 completionBlock(fullImageURLString, nil);
-            }
-                                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                           completionBlock(nil, error);
-                                                       }];
-
-    [[NSOperationQueue mainQueue] addOperation:afhttpRequestOperation];
-    [afhttpRequestOperation resume];
+         } failure:^(NSURLSessionTask *operation, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionBlock(nil, error);
+                });
+            }];
 }
 
 - (void)downloadListingImageWithCompletion:(void (^)(UIImage *image))completion {

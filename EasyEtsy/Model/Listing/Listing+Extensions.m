@@ -21,31 +21,11 @@
         [self fetchImageURLWithCompletion:^(NSString *imageURL, NSError *error) {
                                                             if (!error && imageURL) {
                                                                 weakSelf.imageURLString = imageURL;
-                                                                [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.imageURLString]
-                                                                                                                options:0
-                                                                                                               progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                                                                               }
-                                                                                                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                                                                                  if (image) {
-                                                                                                                      dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                                                          completion(image);
-                                                                                                                      });
-                                                                                                                  }
-                                                                                                              }];
+                                                                [weakSelf downloadListingImageWithCompletion:completion];
                                                             };
                                                         }];
     } else {
-        [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.imageURLString]
-                                                        options:0
-                                                       progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                                                       }
-                                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                                          if (image) {
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  completion(image);
-                                                              });
-                                                          }
-                                                      }];
+        [self downloadListingImageWithCompletion:completion];
     }
 }
 
@@ -76,6 +56,20 @@
 
     [[NSOperationQueue mainQueue] addOperation:afhttpRequestOperation];
     [afhttpRequestOperation resume];
+}
+
+- (void)downloadListingImageWithCompletion:(void (^)(UIImage *image))completion {
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:self.imageURLString]
+                                                    options:0
+                                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                   }
+                                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                      if (image) {
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              completion(image);
+                                                          });
+                                                      }
+                                                  }];
 }
 
 - (NSString *)fetchFullSizedImageURLFromImagesResponse:(NSArray *)imagesResponse {

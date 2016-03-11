@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListingsCollectionBaseViewController.h"
 
-@interface SavedListingsCollectionViewController : UICollectionViewController
+@interface SavedListingsCollectionViewController : ListingsCollectionBaseViewController
 
 @end

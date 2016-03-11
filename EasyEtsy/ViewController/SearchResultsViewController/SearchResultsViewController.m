@@ -7,10 +7,7 @@
 //
 
 #import "SearchResultsViewController.h"
-#import "Constants.h"
-#import "ListingCollectionViewCell.h"
 #import "EtsyWebServiceAPI.h"
-#import "SingleListingDetailsViewController.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 typedef NS_ENUM(NSInteger, UIRefreshControlTag) {
@@ -24,14 +21,11 @@ struct Pagination
     NSInteger offset;
 };
 
-@interface SearchResultsViewController () <UICollectionViewDelegate, UICollectionViewDataSource> {
+@interface SearchResultsViewController () {
     struct Pagination pagination;
 }
 
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
-@property (strong, nonatomic) NSArray *fetchedActiveListings;
-@property (strong, nonatomic) UIImage *selectedListingImage;
-@property (assign, nonatomic) NSUInteger selectedListingIndex;
 
 @end
 
@@ -44,13 +38,6 @@ struct Pagination
         _refreshControl.tag = UIRefreshControlTagTop;
     }
     return _refreshControl;
-}
-
-- (NSArray *)fetchedActiveListings {
-    if (!_fetchedActiveListings) {
-        _fetchedActiveListings = [[NSArray alloc] init];
-    }
-    return _fetchedActiveListings;
 }
 
 #pragma mark - UIViewController
@@ -76,43 +63,6 @@ struct Pagination
                                                     action:@selector(refreshActionWithSender:)
                                           forControlEvents:UIControlEventValueChanged];
     [super viewDidDisappear:animated];
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedListingIndex = (NSUInteger) indexPath.row;
-    [self performSegueWithIdentifier:toSingleListingDetailsSegue sender:self];
-}
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.fetchedActiveListings.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ListingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:listingCellReuseIdentifier
-                                                                                forIndexPath:indexPath];
-    Listing *listing = self.fetchedActiveListings[(NSUInteger) indexPath.row];
-    [cell configureWithListing:listing];
-    return cell;
-}
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:toSingleListingDetailsSegue]) {
-        Listing *selectedListing = self.fetchedActiveListings[self.selectedListingIndex];
-        SingleListingDetailsViewController *destinationVC = segue.destinationViewController;
-        destinationVC.detailedListing = selectedListing;
-    }
 }
 
 #pragma mark - IBActions
@@ -141,12 +91,12 @@ struct Pagination
                                                      completion:^(NSArray *listings, NSError *error) {
                                                          if (!error && listings) {
                                                              if (sender.tag == UIRefreshControlTagBottom) {
-                                                                 NSMutableArray *mutableListings = [weakSelf.fetchedActiveListings mutableCopy];
+                                                                 NSMutableArray *mutableListings = [weakSelf.listingsArray mutableCopy];
                                                                  [mutableListings addObjectsFromArray:listings];
-                                                                 weakSelf.fetchedActiveListings = [mutableListings copy];
+                                                                 weakSelf.listingsArray = [mutableListings copy];
                                                                  pagination.offset += pagination.limit;
                                                              } else if (sender.tag == UIRefreshControlTagTop) {
-                                                                 weakSelf.fetchedActiveListings = listings;
+                                                                 weakSelf.listingsArray = listings;
                                                              }
                                                              [weakSelf.collectionView reloadData];
                                                          } else {

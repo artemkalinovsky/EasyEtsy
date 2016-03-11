@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListingsCollectionBaseViewController.h"
 
-@interface SearchResultsViewController : UICollectionViewController
+@interface SearchResultsViewController : ListingsCollectionBaseViewController
 
 @property (strong, nonatomic) NSDictionary *searchParams;
 

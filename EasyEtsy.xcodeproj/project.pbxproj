@@ -137,13 +137,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		58C7A11BED35B67141FF074E /* ListingResultsBaseViewController */ = {
+		58C7A11BED35B67141FF074E /* ListingsCollectionBaseViewController */ = {
 			isa = PBXGroup;
 			children = (
 				58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */,
 				58C7AAF64141C360DC4D279F /* ListingsCollectionBaseViewController.h */,
 			);
-			path = ListingResultsBaseViewController;
+			path = ListingsCollectionBaseViewController;
 			sourceTree = "<group>";
 		};
 		58C7AFBDD0DD304B66412A59 /* Screenshots */ = {
@@ -182,7 +182,7 @@
 				C852196E1B8FBF08002CB974 /* SingleListingDetailsViewController */,
 				C84043DD1B8F04E200C15C9E /* SearchResultsViewController */,
 				C81C62DA1B8E57900062E761 /* SearchViewController */,
-				58C7A11BED35B67141FF074E /* ListingResultsBaseViewController */,
+				58C7A11BED35B67141FF074E /* ListingsCollectionBaseViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

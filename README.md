@@ -9,10 +9,10 @@ Simple https://www.etsy.com/ iOS client :]
 <b> Screenshots </b>
 <table style="width:100%">
   <tr>
-    <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/searchscreen.png"/></td>
-    <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/searchresults.png"/></td>	
+    <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/Simulator%20Screen%20Shot%20Mar%2014%2C%202016%2C%2010.03.09.png"/></td>
+    <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/Simulator%20Screen%20Shot%20Mar%2014%2C%202016%2C%2010.03.59.png"/></td>	
   </tr>
   <tr>
-     <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/details.png"/></td>
+     <td><img src="https://github.com/artemkalinovsky/EasyEtsy/blob/master/Screenshots/Simulator%20Screen%20Shot%20Mar%2014%2C%202016%2C%2010.04.07.png"/></td>
   </tr>
 </table>

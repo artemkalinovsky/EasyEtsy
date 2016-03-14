@@ -9,27 +9,28 @@
 #import "SearchResultsViewController.h"
 #import "EtsyWebServiceAPI.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
+#import "Pagination.h"
 
 typedef NS_ENUM(NSInteger, UIRefreshControlTag) {
     UIRefreshControlTagTop,
     UIRefreshControlTagBottom
 };
 
-struct Pagination
-{
-    NSInteger limit;
-    NSInteger offset;
-};
+@interface SearchResultsViewController ()
 
-@interface SearchResultsViewController () {
-    struct Pagination pagination;
-}
-
+@property (strong, nonatomic) Pagination *pagination;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation SearchResultsViewController
+
+- (Pagination *)pagination {
+    if (!_pagination) {
+        _pagination = [[Pagination alloc] initWithLimit:50 andOffset:0];
+    }
+    return _pagination;
+}
 
 - (UIRefreshControl *)refreshControl {
     if (!_refreshControl) {
@@ -44,7 +45,6 @@ struct Pagination
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    pagination.limit = 50;
     [self.refreshControl addTarget:self action:@selector(refreshActionWithSender:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
 }
@@ -72,18 +72,14 @@ struct Pagination
     [self.collectionView.bottomRefreshControl endRefreshing];
 
     if (sender.tag == UIRefreshControlTagTop) {
-        NSInteger numberOfWatchedPages = (pagination.limit + pagination.offset) / pagination.limit -1;
-        if (numberOfWatchedPages > 0) {
-            pagination.limit = pagination.limit * numberOfWatchedPages;
-        }
-        pagination.offset = 0;
+        [self.pagination prepareForPageRefreshing];
     } else if (sender.tag == UIRefreshControlTagBottom) {
-        pagination.offset = pagination.limit;
-        pagination.limit = 50;
+        [self.pagination prepareForNextPageLoading];
     }
 
-    NSMutableDictionary *searchParamsWithPagination = [@{@"limit" : @(pagination.limit),
-            @"offset" : @(pagination.offset)} mutableCopy];
+    NSMutableDictionary *searchParamsWithPagination = [@{@"limit" : @(self.pagination.limit),
+                                                         @"offset" : @(self.pagination.offset)} mutableCopy];
+
     [searchParamsWithPagination addEntriesFromDictionary:self.searchParams];
     __weak typeof(self) weakSelf = self;
     [[EtsyWebServiceAPI sharedManager] fetchDataForAPIModelName:APIModelNameListing
@@ -94,7 +90,7 @@ struct Pagination
                                                                  NSMutableArray *mutableListings = [weakSelf.listingsArray mutableCopy];
                                                                  [mutableListings addObjectsFromArray:listings];
                                                                  weakSelf.listingsArray = [mutableListings copy];
-                                                                 pagination.offset += pagination.limit;
+                                                                 [weakSelf.pagination handleNextPageLoadingResults];
                                                              } else if (sender.tag == UIRefreshControlTagTop) {
                                                                  weakSelf.listingsArray = listings;
                                                              }

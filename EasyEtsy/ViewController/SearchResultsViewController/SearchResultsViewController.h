@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Artem Kalinovsky. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "ListingsCollectionBaseViewController.h"
 
 @interface SearchResultsViewController : ListingsCollectionBaseViewController

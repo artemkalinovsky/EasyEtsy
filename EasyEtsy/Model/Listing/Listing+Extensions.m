@@ -32,10 +32,10 @@
 
 - (void)fetchImageURLWithCompletion:(void (^)(NSString *imageURLString, NSError *error))completionBlock {
 
-    NSDictionary *params = @{@"api_key" : kEtsyAPIKey};
+    NSDictionary *params = @{@"api_key" : EtsyAPISecurity.APIKey};
 
-    NSString *urlString = [[kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIListingImages] stringByReplacingOccurrencesOfString:@":listing_id"
-                                                                                                                     withString:self.listingId.stringValue];
+    NSString *urlString = [[EtsyAPIURL.base stringByAppendingString:EtsyAPIURL.listingImages] stringByReplacingOccurrencesOfString:@":listing_id"
+                                                                                                                        withString:self.listingId.stringValue];
     NSURL *URL = [NSURL URLWithString:urlString];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

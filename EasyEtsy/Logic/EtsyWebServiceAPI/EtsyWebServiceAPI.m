@@ -42,14 +42,14 @@
                       parameters:(NSDictionary *)parameters
                       completion:(EtsyWebServiceAPIResponse)completion {
 
-    NSMutableDictionary *params = [@{@"api_key" : kEtsyAPIKey} mutableCopy];
+    NSMutableDictionary *params = [@{@"api_key" : EtsyAPISecurity.APIKey} mutableCopy];
     NSString *urlString;
 
     if (apiModelName == APIModelNameListing && parameters) {
-        urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPIActiveListings];
+        urlString = [EtsyAPIURL.base stringByAppendingString:EtsyAPIURL.activeListings];
         [params addEntriesFromDictionary:parameters];
     } else if (apiModelName == APIModelNameCategory) {
-        urlString = [kEtsyAPIBaseURL stringByAppendingString:kEtsyAPICategories];
+        urlString = [EtsyAPIURL.base stringByAppendingString:EtsyAPIURL.categories];
     }
 
     NSURL *URL = [NSURL URLWithString:urlString];
@@ -62,13 +62,13 @@
       parameters:params
         progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
-                NSArray *fetchedResults = responseObject[@"results"];
-                NSArray *parsedModels = [weakSelf parseFetchedJSONModels:fetchedResults
-                                                         forAPIModelName:apiModelName];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(parsedModels, nil);
-                    [SVProgressHUD dismiss];
-                });
+             NSArray *fetchedResults = responseObject[@"results"];
+             NSArray *parsedModels = [weakSelf parseFetchedJSONModels:fetchedResults
+                                                      forAPIModelName:apiModelName];
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 completion(parsedModels, nil);
+                 [SVProgressHUD dismiss];
+             });
          } failure:^(NSURLSessionTask *operation, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(nil, error);

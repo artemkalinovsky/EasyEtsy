@@ -10,10 +10,9 @@
 
 @class Listing;
 
-extern NSString* const listingCellReuseIdentifier;
-
 @interface ListingCollectionViewCell : UICollectionViewCell
 
++ (NSString *)reuseIdentifier;
 - (void)configureWithListing:(Listing *)listing;
 
 @end

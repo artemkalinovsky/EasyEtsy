@@ -8,8 +8,13 @@
 
 #import "EtsyWebServiceAPIConstants.h"
 
-NSString* const kEtsyAPIBaseURL = @"https://openapi.etsy.com/v2";
-NSString* const kEtsyAPIKey = @"l6pdqjuf7hdf97h1yvzadfce";
-NSString* const kEtsyAPICategories = @"/taxonomy/categories";
-NSString* const kEtsyAPIActiveListings = @"/listings/active";
-NSString* const kEtsyAPIListingImages = @"/listings/:listing_id/images";
+const struct EtsyAPISecurity EtsyAPISecurity = {
+        .APIKey = @"l6pdqjuf7hdf97h1yvzadfce"
+};
+
+const struct EtsyAPIURL EtsyAPIURL = {
+        .base = @"https://openapi.etsy.com/v2",
+        .categories = @"/taxonomy/categories",
+        .activeListings =  @"/listings/active",
+        .listingImages = @"/listings/:listing_id/images"
+};

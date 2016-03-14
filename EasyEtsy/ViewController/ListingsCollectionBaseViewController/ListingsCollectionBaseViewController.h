@@ -3,7 +3,7 @@
 // Copyright (c) 2016 Artem Kalinovsky. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface ListingsCollectionBaseViewController : UICollectionViewController
 

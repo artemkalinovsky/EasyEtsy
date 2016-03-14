@@ -16,5 +16,5 @@
  *
  *  @return size of the Label
  */
--(CGSize)sizeOfMultiLineLabel;
+- (CGSize)sizeOfMultiLineLabel;
 @end

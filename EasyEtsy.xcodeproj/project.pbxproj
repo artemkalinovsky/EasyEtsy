@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		56C4634BB847BF87C6F8F243 /* libPods-EasyEtsy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9B8C289057B1A76F85CA43 /* libPods-EasyEtsy.a */; };
 		58C7AB2267BB7E62066EA3B0 /* ListingsCollectionBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */; };
+		AC344F861C96D58F00F663D1 /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = AC344F851C96D58F00F663D1 /* Pagination.m */; };
 		AC6EA3E81C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.09.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EA3E51C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.09.png */; };
 		AC6EA3E91C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.59.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EA3E61C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.59.png */; };
 		AC6EA3EA1C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.04.07.png in Resources */ = {isa = PBXBuildFile; fileRef = AC6EA3E71C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.04.07.png */; };
@@ -50,6 +51,8 @@
 		42208A473399A155CF17E6BF /* Pods-EasyEtsy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEtsy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyEtsy/Pods-EasyEtsy.debug.xcconfig"; sourceTree = "<group>"; };
 		58C7A4E2A5768FAD0F424123 /* ListingsCollectionBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingsCollectionBaseViewController.m; sourceTree = "<group>"; };
 		58C7AAF64141C360DC4D279F /* ListingsCollectionBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingsCollectionBaseViewController.h; sourceTree = "<group>"; };
+		AC344F841C96D58F00F663D1 /* Pagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pagination.h; sourceTree = "<group>"; };
+		AC344F851C96D58F00F663D1 /* Pagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pagination.m; sourceTree = "<group>"; };
 		AC6EA3E51C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2016, 10.03.09.png"; sourceTree = "<group>"; };
 		AC6EA3E61C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.03.59.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2016, 10.03.59.png"; sourceTree = "<group>"; };
 		AC6EA3E71C96A80D00656593 /* Simulator Screen Shot Mar 14, 2016, 10.04.07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2016, 10.04.07.png"; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				C81C62E51B8E60400062E761 /* EtsyWebServiceAPI.m */,
 				C81C62E71B8E60A70062E761 /* EtsyWebServiceAPIConstants.h */,
 				C81C62E81B8E60A70062E761 /* EtsyWebServiceAPIConstants.m */,
+				AC344F841C96D58F00F663D1 /* Pagination.h */,
+				AC344F851C96D58F00F663D1 /* Pagination.m */,
 			);
 			path = EtsyWebServiceAPI;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 				C81C62E21B8E5D3E0062E761 /* ListingCategory.m in Sources */,
 				C8DC8A221B8E4135002D395B /* AppDelegate.m in Sources */,
 				C84043E41B8F089A00C15C9E /* Constants.m in Sources */,
+				AC344F861C96D58F00F663D1 /* Pagination.m in Sources */,
 				C8DC8A1F1B8E4135002D395B /* main.m in Sources */,
 				C80EE0071B9128920047EC71 /* SavedListingsCollectionViewController.m in Sources */,
 				C85219711B8FBF37002CB974 /* SingleListingDetailsViewController.m in Sources */,

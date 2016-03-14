@@ -8,11 +8,17 @@
 
 @import Foundation;
 
-extern NSString* const kEtsyAPIBaseURL;
-extern NSString* const kEtsyAPIKey;
-extern NSString* const kEtsyAPICategories;
-extern NSString* const kEtsyAPIActiveListings;
-extern NSString* const kEtsyAPIListingImages;
+extern const struct EtsyAPISecurity {
+    __unsafe_unretained NSString *APIKey;
+} EtsyAPISecurity;
+
+
+extern const struct EtsyAPIURL {
+    __unsafe_unretained NSString *base;
+    __unsafe_unretained NSString *categories;
+    __unsafe_unretained NSString *activeListings;
+    __unsafe_unretained NSString *listingImages;
+} EtsyAPIURL;
 
 typedef NS_ENUM(NSInteger, APIModelName) {
     APIModelNameCategory,

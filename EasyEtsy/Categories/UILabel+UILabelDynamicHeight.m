@@ -17,7 +17,7 @@
  *
  *  @return size of the Label
  */
--(CGSize)sizeOfMultiLineLabel{
+- (CGSize)sizeOfMultiLineLabel{
     
     NSString *aLabelTextString = [self text];
     UIFont *aLabelFont = [self font];

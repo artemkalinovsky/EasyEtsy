@@ -10,15 +10,18 @@
 #import "Listing+Extensions.h"
 #import "EtsyWebServiceAPI.h"
 
-NSString *const listingCellReuseIdentifier = @"listingCollectionViewCell";
-
 @interface ListingCollectionViewCell ()
+
 @property(weak, nonatomic) IBOutlet UIImageView *listingImageView;
 @property(weak, nonatomic) IBOutlet UILabel *listingNameLabel;
 
 @end
 
 @implementation ListingCollectionViewCell
+
++ (NSString *)reuseIdentifier {
+    return @"listingCollectionViewCell";
+}
 
 - (void)configureWithListing:(Listing *)listing {
     self.listingNameLabel.text = listing.name;

@@ -52,7 +52,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ListingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:listingCellReuseIdentifier
+    ListingCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[ListingCollectionViewCell reuseIdentifier]
                                                                                 forIndexPath:indexPath];
     Listing *listing = self.listingsArray[(NSUInteger) indexPath.row];
     [cell configureWithListing:listing];

@@ -9,7 +9,6 @@
 #import <MagicalRecord/MagicalRecord/MagicalRecord+Actions.h>
 #import "SingleListingDetailsViewController.h"
 #import "Listing+Extensions.h"
-#import "NSManagedObject+MagicalRecord.h"
 #import "NSManagedObject+MagicalFinders.h"
 #import "NSManagedObjectContext+MagicalRecord.h"
 #import "UILabel+UILabelDynamicHeight.h"
